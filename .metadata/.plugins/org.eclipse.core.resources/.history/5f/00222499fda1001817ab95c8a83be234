@@ -1,0 +1,16 @@
+/*
+ * Task5_a.h
+ *
+ *  Created on: Aug 17, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_TASK5_A_H_
+#define HEADERS_TASK5_A_H_
+
+#include <System.c>
+
+
+
+
+#endif /* HEADERS_TASK5_A_H_ */

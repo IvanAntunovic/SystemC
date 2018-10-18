@@ -1,0 +1,116 @@
+#include <systemc.h>
+
+class Process1 : public sc_module {
+
+	sc_fifo_in<int> a;
+	sc_fifo_out<int> x, y;
+
+	void process1(void) {
+
+		int inputData;
+
+		while (true) {
+
+			cout << "Process1" << endl;
+			inputData = a.read();
+			if (inputData % 2 == 0) {
+				x.write(inputData);
+			} else {
+				y.write(inputData);
+			}
+
+		}
+
+	}
+
+	public: Process1(sc_module_name moduleName) : sc_module(moduleName) {
+
+		SC_HAS_PROCESS(Process1);
+		SC_THREAD(process1);
+
+	}
+
+};
+
+class Process2 : public sc_module {
+
+	sc_fifo_in<int> x;
+	sc_fifo_out<int> y;
+
+	void process2(void) {
+
+		while (true) {
+
+			cout << "Process2" << endl;
+			y.write( x.read() );
+		}
+	}
+
+	public: Process2(sc_module_name moduleName) : sc_module(moduleName) {
+		SC_HAS_PROCESS(Process2);
+		SC_THREAD(process2);
+	}
+
+};
+
+class Process3 : public sc_module {
+
+	sc_fifo_in<int> a, b;
+	sc_fifo_out<int> x;
+
+	void process3(void) {
+
+		int inputData;
+		bool switch_ = true;
+
+		while (true) {
+
+			cout << "Process3" << endl;
+			if (switch_) {
+				inputData = a.read();
+			} else {
+				inputData = b.read();
+			}
+			x.write(inputData);
+			switch_ = !switch_;
+		}
+	}
+
+	public: Process3(sc_module_name moduleName) : sc_module(moduleName) {
+
+		SC_HAS_PROCESS(Process3);
+		SC_THREAD(process3);
+	}
+
+};
+
+class Testbench : sc_module {
+
+	sc_fifo<int> In, Out, C1, C2, C3, C4;
+
+	Process1 i1("i1");
+	Process2 i2("i2");
+	Process2 i3("i3");
+	Process3 i4("i4");
+
+	public Testbench(sc_module_name moduleName) : sc_module(moduleName),
+			In("In"), Out("Out"), C1("C1"), C2("C2"), C3("C3"), C4("C4"){
+
+		i1 << In << C1 << C2;
+		i2 << C1 << C3;
+		i3 << C2 << C4;
+		i3 << C2 << C4;
+		I4 << C3 << C4 << OUT;
+	}
+
+};
+
+
+int sc_main(int argc, char* argv[]) {
+
+
+
+	sc_start();
+
+	return 0;
+}

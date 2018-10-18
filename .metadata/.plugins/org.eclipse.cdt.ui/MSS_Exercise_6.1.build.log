@@ -1,0 +1,20 @@
+08:32:38 **** Incremental Build of configuration Debug for project MSS_Exercise_6.1 ****
+make all 
+Building file: ../source/dst_simple.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/local/systemc-2.3.1/include/ -I"/home/ivan/workspace/MSS_Exercise_6.1/header" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/dst_simple.d" -MT"source/dst_simple.d" -o "source/dst_simple.o" "../source/dst_simple.cpp"
+Finished building: ../source/dst_simple.cpp
+ 
+Building file: ../source/src_simple.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/local/systemc-2.3.1/include/ -I"/home/ivan/workspace/MSS_Exercise_6.1/header" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/src_simple.d" -MT"source/src_simple.d" -o "source/src_simple.o" "../source/src_simple.cpp"
+Finished building: ../source/src_simple.cpp
+ 
+Building target: MSS_Exercise_6.1
+Invoking: GCC C++ Linker
+g++ -L/usr/local/systemc-2.3.1/lib-linux64 -o "MSS_Exercise_6.1"  ./source/dst.o ./source/dst_simple.o ./source/main.o ./source/src.o ./source/src_simple.o   -lsystemc
+Finished building target: MSS_Exercise_6.1
+ 
+
+08:32:41 Build Finished (took 3s.793ms)
+

@@ -1,0 +1,41 @@
+/*
+ * bus.cpp
+ *
+ *  Created on: Aug 18, 2018
+ *      Author: ivan
+ */
+#include "bus.h"
+
+void Bus::write(unsigned addr, unsigned data) {
+
+
+
+}
+
+void Bus::read(unsigned addr, unsigned& data) {
+
+
+}
+
+
+void Bus::decode_address(unsigned addr) {
+
+	for ( unsigned slave_device_num = 0; addr < bus_port.size(); ++addr ) {
+
+		if ( addr >= starts[i] && addr <= ends[i] ) {
+
+			return slave_device_num;
+
+		}
+
+	}
+
+}
+
+void Bus::end_of_elaboration() {
+
+
+
+}
+
+

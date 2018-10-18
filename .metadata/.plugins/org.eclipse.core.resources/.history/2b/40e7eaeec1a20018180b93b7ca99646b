@@ -1,0 +1,25 @@
+/*
+ * Master_ca.h
+ *
+ *  Created on: Aug 18, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_MASTER_CA_H_
+#define HEADERS_MASTER_CA_H_
+
+#include "master.h"
+
+class Master_ca : public sc_module, virtual public Master {
+
+public:
+	Master( sc_module_name mn, unsigned start_addr, unsigned end_addr)
+
+	{
+
+	}
+};
+
+
+
+#endif /* HEADERS_MASTER_CA_H_ */

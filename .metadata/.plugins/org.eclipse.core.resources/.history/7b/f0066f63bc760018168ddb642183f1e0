@@ -1,0 +1,22 @@
+/*
+ * Source.h
+ *
+ *  Created on: Jun 23, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_SOURCE_H_
+#define HEADERS_SOURCE_H_
+
+#include <systemc.h>
+
+class Source : public sc_module {
+
+public:
+	Source(sc_module_name);
+	void threadHandler(void);
+
+};
+
+
+#endif /* HEADERS_SOURCE_H_ */

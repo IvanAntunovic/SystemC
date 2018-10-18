@@ -1,0 +1,15 @@
+/*
+ * Destination.h
+ *
+ *  Created on: Jun 23, 2018
+ *      Author: ivan
+ */
+
+#include "Destination.h"
+
+Destination::Destination(sc_module_name moduleName) : sc_module(moduleName) {
+
+	SC_HAS_PROCESS(Destination);
+}
+
+

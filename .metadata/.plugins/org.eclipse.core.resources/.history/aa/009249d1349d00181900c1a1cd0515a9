@@ -1,0 +1,40 @@
+#include <systemc.h>
+
+
+SC_MODULE(Test) {
+
+	sc_fifo<int> f;
+	sc_event e1;
+
+
+	void handler(void) {
+
+		sc_time t(200, SC_NS); // variable t of type sc_time
+		cout << "Entering process at " << sc_time_stamp() << endl;
+		while (true) {
+
+
+			// resume on e1, e2, or e3, timeout after 200 ns
+			wait( t, e1 );
+			cout  << sc_time_stamp() << endl;
+
+		}
+	}
+
+
+	SC_CTOR(Test) {
+		SC_THREAD(handler);
+
+	}
+};
+
+int sc_main(int argc, char* argv[]) {
+
+	Test test("test");
+
+	cout << endl;
+
+	sc_start();
+
+	return 0;
+}

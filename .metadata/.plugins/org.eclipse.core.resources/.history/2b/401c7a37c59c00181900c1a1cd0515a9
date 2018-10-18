@@ -1,0 +1,18 @@
+#include <systemc.h>
+#include <Basic.h>
+#include "Multiport.h"
+#include "testbench.h"
+
+int sc_main(int argc, char* argv[]) {
+
+	//Basic basic("basic");
+	//Multiport multiPort("Multiport");
+	Testbench tb("tb");
+
+
+	cout << endl;
+
+	sc_start();
+
+	return 0;
+}

@@ -1,0 +1,29 @@
+/*
+ * NotificationTestBench.h
+ *
+ *  Created on: Aug 17, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_NOTIFICATIONTESTBENCH_H_
+#define HEADERS_NOTIFICATIONTESTBENCH_H_
+
+#include <systemc.h>
+
+SC_MODULE(NotificationsTestbench) {
+
+	int x;
+	int y;
+	sc_event new_stimulus;
+
+	SC_CTOR(NotificationsTestbench) {
+
+		SC_THREAD(stim);
+		SC_THREAD(check);
+	}
+
+};
+
+
+
+#endif /* HEADERS_NOTIFICATIONTESTBENCH_H_ */

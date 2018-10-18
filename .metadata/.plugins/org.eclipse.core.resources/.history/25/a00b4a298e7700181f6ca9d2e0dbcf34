@@ -1,0 +1,28 @@
+/*
+ * Adapter.h
+ *
+ *  Created on: Jun 24, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADER_ADAPTER_H_
+#define HEADER_ADAPTER_H_
+
+#include <systemc.h>
+#include "bus_if.h"
+
+class Adapter : public sc_module, public bus_if {
+
+public:
+	sc_in<int> x;
+	sc_in<int> y;
+	sc_out<int> s;
+
+	Adapter(sc_module_name);
+	void write( unsigned addr, unsigned  data ) override;
+	void read(  unsigned addr, unsigned &data ) override;
+
+};
+
+
+#endif /* HEADER_ADAPTER_H_ */

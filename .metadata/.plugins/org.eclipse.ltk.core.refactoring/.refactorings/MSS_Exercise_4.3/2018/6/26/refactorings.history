@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;MSS_Exercise_4.3/header/Adapter.h&apos; to &apos;AdderAdapter.h&apos;" description="Rename resource &apos;Adapter.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="header/Adapter.h" name="AdderAdapter.h" stamp="1529831789310" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;MSS_Exercise_4.3/source/Adapter.cpp&apos; to &apos;AdderAdapter.cpp&apos;" description="Rename resource &apos;Adapter.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="source/Adapter.cpp" name="AdderAdapter.cpp" stamp="1529831797131" updateReferences="true"/>
+</session>

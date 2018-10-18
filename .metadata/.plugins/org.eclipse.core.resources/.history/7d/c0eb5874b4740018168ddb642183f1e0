@@ -1,0 +1,79 @@
+#include <systemc.h>
+#include <iostream>
+
+SC_MODULE(Dynamic) {
+
+	sc_in_clk clk;
+	sc_out<int> outport;
+	sc_event p_event, c_event;
+	sc_port<int> port;
+	sc_channel<int> channel;
+	int pkt;
+
+	int produce_packet(){
+		return ++pkt;
+	}
+
+	void consume_packet(int packet) {
+		cout << "@ " << sc_time_stamp()
+				<< ": Packet written out: " << packet << endl;
+		outport.write(packet);
+	}
+
+	void produce() {
+		while (true) {
+			pkt = produce_packet();
+
+			cout << "@" << sc_time_stamp << ":Packet produced: " <<
+					pkt << endl;
+			p_event.notify(5, SC_NS);
+			wait();
+			wait(c_event);
+		}
+	}
+
+	void consume() {
+
+		while(true) {
+			wait(p_event);
+			consume_packet(pkt);
+			cout << "@ " << sc_time_stamp() << ":Packet consumed: "
+					<< pkt << endl;
+			wait(3);
+			c_event.notify();
+		}
+	}
+
+	SC_CTOR(Dynamic) {
+
+		SC_THREAD(produce);
+		sensitive << clk.pos();
+		SC_THREAD(consume);
+		sensitive << clk.pos();
+
+		port(channel):
+
+		pkt = 0;
+
+	}
+
+};
+
+
+/*##################################################### */
+
+
+int sc_main(int argc, char* argv[]) {
+
+	//task3_3();
+
+	Dynamic dynamic("Dynamic");
+
+	sc_start();
+
+	cout << "Simulation finished" << endl;
+
+
+
+	return 0;
+}

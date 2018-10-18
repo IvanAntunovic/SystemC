@@ -1,0 +1,12 @@
+07:42:47 **** Build of configuration Debug for project TLM_Exercise ****
+make all 
+Building file: ../src/sc_main.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/local/systemc-2.3.1/include/ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/sc_main.d" -MT"src/sc_main.d" -o "src/sc_main.o" "../src/sc_main.cpp"
+../src/sc_main.cpp:4:18: fatal error: fifo.h: No such file or directory
+compilation terminated.
+src/subdir.mk:18: recipe for target 'src/sc_main.o' failed
+make: *** [src/sc_main.o] Error 1
+
+07:42:48 Build Finished (took 852ms)
+

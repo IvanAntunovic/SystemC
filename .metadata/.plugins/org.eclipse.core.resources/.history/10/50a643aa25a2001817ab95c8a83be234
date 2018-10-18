@@ -1,0 +1,53 @@
+/*
+ * NotificationTestBench.h
+ *
+ *  Created on: Aug 17, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_NOTIFICATIONTESTBENCH_H_
+#define HEADERS_NOTIFICATIONTESTBENCH_H_
+
+#include <systemc.h>
+
+SC_MODULE(NotificationsTestbench) {
+
+	int x;
+	int y;
+	sc_event new_stimulus;
+
+	void stim()
+	{
+		x = 3; y = 4;
+		new_stimulus.notify();
+		x = 7; y = 0;
+		new_stimulus.notify();
+		// stimulus 7, 0 again
+		new_stimulus.notify();
+
+	}
+
+	void Testbench::check()
+	{
+		for(;;)
+		{
+			wait(new_stimulus);
+			if( s == x+y )
+			cout << “OK“ << ...;
+			else
+			cout << “ERROR“ << ...;
+		}
+	}
+
+
+	SC_CTOR(NotificationsTestbench) {
+
+		SC_THREAD(stim);
+		SC_THREAD(check);
+	}
+
+};
+
+
+
+#endif /* HEADERS_NOTIFICATIONTESTBENCH_H_ */

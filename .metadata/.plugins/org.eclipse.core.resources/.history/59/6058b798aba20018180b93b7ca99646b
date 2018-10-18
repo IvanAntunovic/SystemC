@@ -1,0 +1,23 @@
+/*
+ * master.cpp
+ *
+ *  Created on: Aug 18, 2018
+ *      Author: ivan
+ */
+
+#include "master.h"
+
+void Master::action() {
+
+	unsigned data;
+
+	wait(10, SC_NS);
+
+	for (int addr = start; addr < end; ++addr) {
+
+	}
+}
+
+
+
+

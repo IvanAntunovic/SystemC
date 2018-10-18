@@ -1,0 +1,18 @@
+#include "Adder.h"
+
+Adder::Adder(sc_module_name moduleName) : sc_module(moduleName) {
+
+
+}
+void Adder::add()
+{
+	while (true) {
+
+		cout << "Adder thread" << endl;
+
+		mOutPort.write( mInputPort_1.read() + mInputPort_2.read() );
+
+
+	}
+
+}

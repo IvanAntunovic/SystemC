@@ -1,0 +1,25 @@
+#ifndef _TESTBENCH_H_
+#define _TESTBENCH_H_
+
+#include "systemc.h"
+
+
+SC_MODULE(Testbench)
+{ 									// a top level module; no ports
+
+
+  void stim();						// stimuli process
+  void check();						// checking process
+
+  SC_CTOR(Testbench)
+  :
+  {
+    SC_THREAD(stim);				// without sensitivity
+    SC_THREAD(check);
+
+
+  }
+};
+
+#endif
+

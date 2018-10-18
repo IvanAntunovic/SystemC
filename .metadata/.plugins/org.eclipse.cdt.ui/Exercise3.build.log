@@ -1,0 +1,36 @@
+06:58:13 **** Incremental Build of configuration Debug for project Exercise3 ****
+make all 
+Building file: ../src/main.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/home/ivan/workspace/Exercise3/headers" -I/usr/local/systemc-2.3.1/include/ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+In file included from ../src/main.cpp:3:0:
+/home/ivan/workspace/Exercise3/headers/testbench.h: In constructor ‘Testbench::Testbench(sc_core::sc_module_name)’:
+/home/ivan/workspace/Exercise3/headers/testbench.h:9:9: warning: ‘Testbench::uut’ will be initialized after [-Wreorder]
+   Adder uut;      // Adder instance
+         ^
+/home/ivan/workspace/Exercise3/headers/testbench.h:8:16: warning:   ‘sc_core::sc_fifo<int> Testbench::ch_x’ [-Wreorder]
+   sc_fifo<int> ch_x, ch_y, ch_s;  // channels
+                ^
+In file included from /usr/local/systemc-2.3.1/include/systemc:74:0,
+                 from /usr/local/systemc-2.3.1/include/systemc.h:210,
+                 from ../src/main.cpp:2:
+/home/ivan/workspace/Exercise3/headers/testbench.h:12:11: warning:   when initialized here [-Wreorder]
+   SC_CTOR(Testbench)
+           ^
+/usr/local/systemc-2.3.1/include/sysc/kernel/sc_module.h:401:5: note: in definition of macro ‘SC_CTOR’
+     user_module_name( ::sc_core::sc_module_name )
+     ^
+../src/main.cpp: In member function ‘int Register::read()’:
+../src/main.cpp:50:50: warning: no return statement in function returning non-void [-Wreturn-type]
+  int read(){ cout << "Register::read()" << endl; }
+                                                  ^
+Finished building: ../src/main.cpp
+ 
+Building target: Exercise3
+Invoking: GCC C++ Linker
+g++ -L/usr/local/systemc-2.3.1/lib-linux64 -o "Exercise3"  ./src/adder.o ./src/main.o ./src/testbench.o   -lsystemc
+Finished building target: Exercise3
+ 
+
+06:58:16 Build Finished (took 2s.490ms)
+

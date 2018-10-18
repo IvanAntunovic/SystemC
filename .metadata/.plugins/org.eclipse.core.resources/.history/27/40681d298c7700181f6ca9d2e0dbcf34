@@ -1,0 +1,21 @@
+/*
+ * Adapter.h
+ *
+ *  Created on: Jun 24, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADER_ADAPTER_H_
+#define HEADER_ADAPTER_H_
+
+#include <systemc.h>
+#include "bus_if.h"
+
+class Adapter : public sc_module, public bus_if {
+
+public:
+
+};
+
+
+#endif /* HEADER_ADAPTER_H_ */

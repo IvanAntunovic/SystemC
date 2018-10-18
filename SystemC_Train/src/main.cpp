@@ -1,0 +1,63 @@
+#include <systemc.h>
+#include "Task5_a.h"
+#include "Task5_d.h"
+#include "DeltaTImeWait.h"
+#include "NotificationTestBench.h"
+
+SC_MODULE(Test) {
+
+	sc_event evt;
+
+	sc_signal<int> sig_1;
+	sc_signal<int> sig_2;
+
+	int i = 0;
+	int j = 0;
+
+	ofstream file;
+
+	void p1(void) {
+
+		while (true) {
+
+			cout << "p1: " << i << "\t" << sc_time_stamp() << endl;
+			sig_1 = i++;
+			evt.notify();
+			wait(1, SC_NS);
+		}
+
+	}
+
+	void p2(void) {
+
+		while (true) {
+
+			wait( evt );
+			cout << "p2: " << j << "\t" << sc_time_stamp() << endl;
+			sig_2 = j++;
+			//wait(1, SC_NS);
+		}
+
+	}
+
+
+	SC_CTOR(Test) : file("output.txt") {
+
+		SC_THREAD(p1);
+
+		SC_THREAD(p2);
+
+	}
+};
+
+int sc_main(int argc, char* argv[]) {
+
+	//Task5_d task("task");
+	//DeltaTimeWait deltaWait("deltaWait");
+	//Task5_a task("task");
+	NotificationsTestbench tb("testbench");
+
+	sc_start(100, SC_NS);
+
+	return 0;
+}

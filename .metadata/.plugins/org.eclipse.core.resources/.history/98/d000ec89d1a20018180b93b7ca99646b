@@ -1,0 +1,10 @@
+#include "adder.h"
+
+void Adder::add()
+{
+	sc_buffer<int> buff;
+		s = x + y;
+
+
+
+}

@@ -1,0 +1,33 @@
+/*
+ * bus_pv.h
+ *
+ *  Created on: Aug 17, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_BUS_PV_H_
+#define HEADERS_BUS_PV_H_
+
+#include <systemc.h>
+#include "bus_if.h"
+
+class Bus : public sc_module, public bus_if {
+
+public:
+
+	sc_port<bus_if, 0> bus_port;
+	sc_export<bus_if> bus_export;
+
+	// implement bus_if
+	void write()
+
+	Bus(sc_module_name mn) : sc_module(mn) {
+
+
+	}
+
+};
+
+
+
+#endif /* HEADERS_BUS_PV_H_ */

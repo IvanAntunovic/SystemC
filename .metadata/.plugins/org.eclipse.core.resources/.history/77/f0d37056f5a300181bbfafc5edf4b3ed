@@ -1,0 +1,32 @@
+// file main.cpp
+#include "systemc.h"
+#include "testbench.h"
+
+SC_MODULE(Test) {
+
+	sc_signal<int> x, y;
+
+	void p1() {
+
+
+	}
+
+	void p2() {
+
+	}
+
+	SC_CTOR(Test) {
+
+		SC_THREAD(p1);
+		SC_METHOD(p2);
+		sensitive << x << y;
+	}
+}
+
+int sc_main(int argc, char *argv[])  // cf. C++ main()
+{
+  //Testbench tb("tb");
+  sc_start();
+  cout << "simulation finished" << endl;
+  return 0;
+}

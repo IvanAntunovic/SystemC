@@ -1,0 +1,61 @@
+/*
+ * Adapter.cpp
+ *
+ *  Created on: Jun 24, 2018
+ *      Author: ivan
+ */
+#include <AdderAdapter.h>
+
+AdderAdapter::AdderAdapter(sc_module_name moduleName, unsigned start, unsigned size) : sc_module(moduleName),
+	mStart(start), mSize(size) {
+
+}
+
+void AdderAdapter::write( unsigned addr, unsigned  data ) {
+
+	if( (addr < mStart) || (addr >= mStart + mSize) ) {
+		cout << name() << " write(" << addr << ", __) : ERROR address out of range" << endl;
+		return;
+	}
+
+	if ( addr == ADDER_FIRST_INPUT_ADDR ) { // If Address 1024 write to the 1st input of Adder
+
+		mFirstOutputPort.write(data);
+
+	} else if ( addr == ADDER_SECOND_INPUT_ADDR ) {
+
+		mSecondOutputPort.write(data);
+
+	} else if ( addr == ADDER_OUTPUT_ADDR ) {
+
+		cout << name() << " write(" << addr << ", __) : ERROR address is read-only" << endl;
+	}
+
+}
+
+void AdderAdapter::read(  unsigned addr, unsigned &data ){
+
+	if( (addr < mStart) || (addr >= mStart + mSize) ) {
+		cout << name() << " read(" << addr << ", __) : ERROR address out of range" << endl;
+		return;
+	}
+
+	sc_fifo_out<int> fifo;
+
+	if ( addr = ADDER_FIRST_INPUT_ADDR ) {
+
+		data = mFirstOutputPort.read();
+
+	} else if ( addr = ADDER_SECOND_INPUT_ADDR ) {
+
+		data = mSecondOutputPort.read();
+
+	} else if ( addr = ADDER_OUTPUT_ADDR ) {
+
+		data = mInputPort.read();
+
+	}
+
+}
+
+

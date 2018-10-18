@@ -1,0 +1,49 @@
+/*
+ * slave.h
+ *
+ *  Created on: Aug 17, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_SLAVE_H_
+#define HEADERS_SLAVE_H_
+
+#include <systemc.h>
+#include "bus_if.h"
+
+class Ram : public sc_module, public bus_if {
+
+
+public:
+
+	sc_export<bus_if> target_export;
+	unsigned m_start_addr, m_memory_size;
+	unsigned* m_memory;
+
+	Ram(sc_module_name mn, unsigned start_addr, unsigned memory_size) : sc_module(mn), m_start_addr(start_addr), m_memory_size(memory_size) {
+
+		target_export.bind(*this);
+		m_memory = new unsigned[memory_size];
+	}
+
+	~Ram() {
+
+		delete[] m_memory;
+
+	}
+
+	void write(unsigned addr, unsigned data) {
+
+		m_memory[addr] = data;
+	}
+
+	void read(unsigned addr, unsigned& data) {
+
+	}
+
+};
+
+
+
+
+#endif /* HEADERS_SLAVE_H_ */

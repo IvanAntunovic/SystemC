@@ -1,0 +1,29 @@
+/*
+ * TrafficLightController.h
+ *
+ *  Created on: Aug 17, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_TRAFFICLIGHTCONTROLLER_H_
+#define HEADERS_TRAFFICLIGHTCONTROLLER_H_
+
+#include <systemc.h>
+
+class TrafficLightController : sc_module {
+
+private:
+	enum state { RED, YELLOW, GREEN };
+	state m_state;
+
+public:
+	TrafficLightController(sc_module_name mn) : sc_module_name( mn ), m_state( RED ) {
+
+		SC_HAS_PROCESS(TrafficLightController);
+	}
+
+};
+
+
+
+#endif /* HEADERS_TRAFFICLIGHTCONTROLLER_H_ */

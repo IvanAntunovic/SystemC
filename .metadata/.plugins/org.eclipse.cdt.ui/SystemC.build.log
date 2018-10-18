@@ -1,0 +1,73 @@
+15:36:32 **** Incremental Build of configuration Debug for project SystemC ****
+make all 
+Building file: ../src/main.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/local/systemc-2.3.1/include/ -I"/home/ivan/workspace/SystemC/headers" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+../src/main.cpp: In member function ‘void Dynamic::produce()’:
+../src/main.cpp:27:19: warning: the address of ‘const sc_core::sc_time& sc_core::sc_time_stamp()’ will always evaluate as ‘true’ [-Waddress]
+    cout << "@" << sc_time_stamp << ":Packet produced: " <<
+                   ^
+In file included from /usr/local/systemc-2.3.1/include/sysc/communication/sc_signal.h:32:0,
+                 from /usr/local/systemc-2.3.1/include/sysc/communication/sc_buffer.h:34,
+                 from /usr/local/systemc-2.3.1/include/systemc:79,
+                 from /usr/local/systemc-2.3.1/include/systemc.h:210,
+                 from ../src/main.cpp:1:
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h: In instantiation of ‘sc_core::sc_interface* sc_core::sc_port_b<IF>::get_interface() [with IF = int]’:
+../src/main.cpp:78:1:   required from here
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h:308:18: error: cannot convert ‘int*’ to ‘sc_core::sc_interface*’ in return
+         { return m_interface; }
+                  ^
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h: In instantiation of ‘const sc_core::sc_interface* sc_core::sc_port_b<IF>::get_interface() const [with IF = int]’:
+../src/main.cpp:78:1:   required from here
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h:311:18: error: cannot convert ‘int* const’ to ‘const sc_core::sc_interface*’ in return
+         { return m_interface; }
+                  ^
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h: In instantiation of ‘int sc_core::sc_port_b<IF>::vbind(sc_core::sc_interface&) [with IF = int]’:
+../src/main.cpp:78:1:   required from here
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h:511:41: error: cannot dynamic_cast ‘& interface_’ (of type ‘class sc_core::sc_interface*’) to type ‘int*’ (target is not pointer or reference to class)
+     IF* iface = DCAST<IF*>( &interface_ );
+                                         ^
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h:516:20: error: no matching function for call to ‘sc_core::sc_port_b<int>::bind(int&)’
+     base_type::bind( *iface );
+                    ^
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h:109:10: note: candidate: void sc_core::sc_port_base::bind(sc_core::sc_interface&)
+     void bind( sc_interface& interface_ );
+          ^
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h:109:10: note:   no known conversion for argument 1 from ‘int’ to ‘sc_core::sc_interface&’
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h:112:10: note: candidate: void sc_core::sc_port_base::bind(sc_core::sc_port_base::this_type&)
+     void bind( this_type& parent_ );
+          ^
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h:112:10: note:   no known conversion for argument 1 from ‘int’ to ‘sc_core::sc_port_base::this_type& {aka sc_core::sc_port_base&}’
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h: In instantiation of ‘void sc_core::sc_port_b<IF>::add_interface(sc_core::sc_interface*) [with IF = int]’:
+../src/main.cpp:78:1:   required from here
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h:542:40: error: cannot dynamic_cast ‘interface_’ (of type ‘class sc_core::sc_interface*’) to type ‘int*’ (target is not pointer or reference to class)
+     IF* iface = DCAST<IF*>( interface_ );
+                                        ^
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h: In instantiation of ‘void sc_core::sc_port_b<IF>::make_sensitive(sc_core::sc_thread_handle, sc_core::sc_event_finder*) const [with IF = int; sc_core::sc_thread_handle = sc_core::sc_thread_process*]’:
+../src/main.cpp:78:1:   required from here
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h:591:6: error: request for member ‘default_event’ in ‘* iface_p’, which is of non-class type ‘int’
+      add_static_event( handle_p, iface_p->default_event() );
+      ^
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h: In instantiation of ‘void sc_core::sc_port_b<IF>::make_sensitive(sc_core::sc_method_handle, sc_core::sc_event_finder*) const [with IF = int; sc_core::sc_method_handle = sc_core::sc_method_process*]’:
+../src/main.cpp:78:1:   required from here
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h:612:6: error: request for member ‘default_event’ in ‘* iface_p’, which is of non-class type ‘int’
+      add_static_event( handle_p, iface_p->default_event() );
+      ^
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h: In instantiation of ‘void sc_core::sc_port_b<IF>::bind(IF&) [with IF = int]’:
+../src/main.cpp:78:1:   required from here
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h:270:19: error: no matching function for call to ‘sc_core::sc_port_b<int>::bind(int&)’
+  { base_type::bind( interface_ ); }
+                   ^
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h:109:10: note: candidate: void sc_core::sc_port_base::bind(sc_core::sc_interface&)
+     void bind( sc_interface& interface_ );
+          ^
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h:109:10: note:   no known conversion for argument 1 from ‘int’ to ‘sc_core::sc_interface&’
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h:112:10: note: candidate: void sc_core::sc_port_base::bind(sc_core::sc_port_base::this_type&)
+     void bind( this_type& parent_ );
+          ^
+/usr/local/systemc-2.3.1/include/sysc/communication/sc_port.h:112:10: note:   no known conversion for argument 1 from ‘int’ to ‘sc_core::sc_port_base::this_type& {aka sc_core::sc_port_base&}’
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+
+15:36:34 Build Finished (took 1s.346ms)
+

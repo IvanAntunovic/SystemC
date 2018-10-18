@@ -1,0 +1,49 @@
+/*
+ * DeltaTImeWait.h
+ *
+ *  Created on: Aug 16, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_DELTATIMEWAIT_H_
+#define HEADERS_DELTATIMEWAIT_H_
+
+#include <systemc.h>
+
+
+SC_MODULE(DeltaTimeWait) {
+
+	ofstream file;
+
+	void p1(void) {
+
+		while (true) {
+
+			wait(0, SC_NS);
+			file << "p1: " << sc_time_stamp() << " delta " << sc_delta_count()﻿ << end﻿l;
+
+
+		}
+	}
+
+	void p2(void) {
+
+		while (true) {
+
+			wait(0, SC_NS);
+			file << "p2: " << sc_time_stamp() << " delta " << sc_delta_count()﻿ << end﻿l;
+
+
+		}
+	}
+
+	SC_CTOR(DeltaTimeWait) : file("output.txt")  {
+
+		SC_THREAD(p1);
+		SC_THREAD(p2);
+	}
+};
+
+
+
+#endif /* HEADERS_DELTATIMEWAIT_H_ */

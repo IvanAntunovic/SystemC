@@ -1,0 +1,27 @@
+// file main.cpp
+#include "systemc.h"
+#include "testbench.h"
+#include "sensitivity.h"
+#include "EventNotifications.h"
+#include "ParallelProcesses.h"
+#include "NextTrigger.h"
+
+
+int sc_main(int argc, char *argv[])  // cf. C++ main()
+{
+	NextTrigger nextTrigger;
+	//Testbench tb("tb");
+  //Sensitivity sensitive("sens");
+	//EventNotifications eventNot("ev");
+
+	//ParallelProcesses parallelProc("pp");
+
+
+
+  sc_start();
+
+  cout << "simulation finished" << endl;
+
+
+  return 0;
+}

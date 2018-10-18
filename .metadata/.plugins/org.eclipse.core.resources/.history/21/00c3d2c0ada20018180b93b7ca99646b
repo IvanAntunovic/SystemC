@@ -1,0 +1,37 @@
+/*
+ * ram.cpp
+ *
+ *  Created on: Aug 18, 2018
+ *      Author: ivan
+ */
+
+#include "ram.h"
+
+void Ram::write(unsigned addr, unsigned data) {
+
+	if( (addr < start_addr) || (addr >= start_addr + memory_size) ) {
+
+		cout << name() << " write(" << addr << ", __) : ERROR"
+			 << "address out of range" << endl;
+
+		return;
+
+	}
+
+	memory[addr - start_addr] = data;
+
+}
+
+void Ram::read(unsigned addr, unsigned& data) {
+
+	if( (addr < start_addr) || (addr >= start_addr + memory_size) ) {
+
+		cout << name() << " read(" << addr << ", __) : ERROR"
+			<< "address out of range" << endl;
+	}
+
+
+	data = memory[addr - start_addr];
+
+}
+

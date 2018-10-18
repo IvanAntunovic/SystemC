@@ -1,0 +1,13 @@
+// file main.cpp
+#include "systemc.h"
+#include "counter.h"
+
+int sc_main(int argc, char *argv[])  // cf. C++ main()
+{
+  Counter counter("cnt");
+
+
+  sc_start();
+  cout << "simulation finished" << endl;
+  return 0;
+}

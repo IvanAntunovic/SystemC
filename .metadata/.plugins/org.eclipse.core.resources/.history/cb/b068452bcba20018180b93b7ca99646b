@@ -1,0 +1,69 @@
+/*
+ * adapter.cpp
+ *
+ *  Created on: Aug 18, 2018
+ *      Author: ivan
+ */
+
+#include <adapter.h>
+
+#define ADDER_FIRST_OUTPUT_ADDR 	1024
+#define	ADDER_FIRST_INPUT_ADDR  	1024
+#define ADDER_SECOND_OUTPUT_ADDR 	1025
+#define	ADDER_SECOND_INPUT_ADDR  	1025
+#define ADDDER_RESULT_ADDR			1026
+#define ADDER_READ_ONLY_ADDR	 	1026
+
+void Adapter::write(unsigned addr, unsigned data) {
+
+	switch (addr) {
+
+		case ADDER_FIRST_OUTPUT_ADDR:
+
+			break;
+
+		case ADDER_SECOND_OUTPUT_ADDR:
+			y.write(data);
+			break;
+
+		case ADDER_READ_ONLY_ADDR:
+			cout << "ERROR while writing to the Adder!" << addr << " is READ ONLY ADDRESS" << endl;
+			break;
+
+		default:
+			cout << "WARNING: Address out of range!" << endl;
+
+	}
+
+	data_to_send = data;
+}
+
+void Adapter::read(unsigned addr, unsigned& data) {
+
+
+	switch (addr) {
+
+		case ADDER_FIRST_INPUT_ADDR:
+			x.read(data);
+			break;
+
+		case ADDER_SECOND_INPUT_ADDR:
+			y.read(data);
+			break;
+
+		case ADDDER_RESULT_ADDR:
+
+			break;
+
+		default:
+			cout << "WARNING: Address out of range!" << endl;
+
+	}
+
+}
+
+void Adapter::trigger_addition(void) {
+
+}
+
+

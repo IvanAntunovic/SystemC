@@ -1,0 +1,40 @@
+#include "testbench.h"
+
+Testbench::Testbench(sc_module_name moduleName): sc_module(moduleName), mThread("thread"),
+	mChannel("Channel") {
+
+	  SC_HAS_PROCESS(Testbench);
+	  SC_THREAD(stim);				// without sensitivity
+	  SC_THREAD(check);
+
+	  mThread.x.bind(mChannel);
+}
+
+void Testbench::stim()  // SC_THREAD
+{
+	int data;
+
+	while (true) {
+
+		cout << sc_module::name() << "-> Enter value." << endl;
+		cin >> data;
+		mChannel.write(data);
+		wait(10, SC_NS);
+
+	}
+}
+
+void Testbench::check() // SC_METHOD
+{
+	int adderInputOne, adderInputTwo, adderOutput;
+	int multiplierInput, mulitipilerOutput;
+	int decimatorInput, decimatorOutput;
+
+	/*
+	while (true) {
+
+
+
+	}*/
+
+}

@@ -1,0 +1,29 @@
+/*
+ * adapter.cpp
+ *
+ *  Created on: Aug 18, 2018
+ *      Author: ivan
+ */
+
+#include <adapter.h>
+
+
+
+void Adapter::write(unsigned addr, unsigned data) {
+
+#define ADDER_FIRST_INPUT_ADDR 1024
+
+	switch (addr) {
+
+		case ADDER_FIRST_INPUT_ADDR:
+			output_1.write(data);
+
+	}
+}
+
+void Adapter::read(unsigned addr, unsigned& data) {
+
+
+}
+
+

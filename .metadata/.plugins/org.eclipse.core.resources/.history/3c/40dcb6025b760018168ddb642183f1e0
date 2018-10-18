@@ -1,0 +1,41 @@
+#include "testbench.h"
+
+Testbench::Testbench(sc_module_name moduleName) : sc_module(moduleName), mUutAdder("Adder") {
+
+	SC_HAS_PROCESS(Testbench);
+	SC_THREAD(stim);
+	SC_THREAD(check);
+
+	mUutAdder.mInputPort_1.bind(mAdderInput_ch_1);
+
+
+}
+
+void Testbench::stim()  // SC_THREAD
+{
+
+	while (true) {
+
+	  cout << "Stimuli: " << endl
+			  << "\tInput 1: 3" << endl
+			  << "\tInput 2: 4" << endl;
+
+	  mAdderInput_ch_1.write(3);
+	}
+
+
+}
+
+void Testbench::check() // SC_METHOD
+{
+	int adderInputOne, adderInputTwo, adderOutput;
+	int multiplierInput, mulitipilerOutput;
+	int decimatorInput, decimatorOutput;
+
+	while (true) {
+
+		cout << "Testbench::check() -> Output: " << adderOutput;
+
+	}
+
+}

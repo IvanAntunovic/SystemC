@@ -1,0 +1,22 @@
+/*
+ * EventNotifications.h
+ *
+ *  Created on: Aug 18, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_EVENTNOTIFICATIONS_H_
+#define HEADERS_EVENTNOTIFICATIONS_H_
+
+#include <systemc.h>
+
+SC_MODULE(EventNotifications) {
+
+	SC_CTOR(EventNotifications) {
+
+	}
+};
+
+
+
+#endif /* HEADERS_EVENTNOTIFICATIONS_H_ */

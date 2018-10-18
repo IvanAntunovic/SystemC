@@ -1,0 +1,13 @@
+#include "adder.h"
+
+void Adder::add()
+{
+
+	while (true) {
+
+		wait( x | y);
+		s = x + y;
+
+	}
+
+}

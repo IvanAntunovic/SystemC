@@ -1,0 +1,11 @@
+15:39:47 **** Build of configuration Debug for project MSS_Exercise_3.2 ****
+make all 
+Building file: ../src/Source.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/home/ivan/workspace/MSS_Exercise_3.2/headers" -I/usr/local/systemc-2.3.1/include/ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/Source.d" -MT"src/Source.d" -o "src/Source.o" "../src/Source.cpp"
+src/subdir.mk:36: recipe for target 'src/Source.o' failed
+make: *** [src/Source.o] Terminated
+Command canceled
+
+15:39:48 Build Cancelled (took 1s.704ms)
+

@@ -1,0 +1,23 @@
+/*
+ * bus_ca.cpp
+ *
+ *  Created on: Aug 18, 2018
+ *      Author: ivan
+ */
+#include "bus_ca.h"
+
+
+void write(unsigned addr, unsigned data, unsigned master_id) {
+
+
+
+}
+
+void read(unsigned addr, unsigned& data, unsigned master_id) {
+
+
+
+}
+
+
+

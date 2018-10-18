@@ -1,0 +1,15 @@
+#include "adder.h"
+
+void Adder::add()
+{
+	while (true) {
+		wait();
+
+			cout << "Add" << endl;
+			s = x + y;
+	}
+
+
+
+
+}

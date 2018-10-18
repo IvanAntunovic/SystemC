@@ -1,0 +1,25 @@
+/*
+ * master.cpp
+ *
+ *  Created on: Aug 18, 2018
+ *      Author: ivan
+ */
+
+#include "master.h"
+
+void Master::action() {
+
+	unsigned data;
+
+	wait(10, SC_NS);
+
+	for (int addr = start_addr; addr < end_addr; ++addr) {
+
+		initiator_port->write(addr, data);
+
+	}
+}
+
+
+
+

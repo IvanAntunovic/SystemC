@@ -1,0 +1,23 @@
+/*
+ * Test.h
+ *
+ *  Created on: Aug 10, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_TEST_H_
+#define HEADERS_TEST_H_
+
+#include <systemc.h>
+
+SC_MODULE(Test) {
+
+	void threadHandler(void) {
+
+	}
+
+}
+
+
+
+#endif /* HEADERS_TEST_H_ */

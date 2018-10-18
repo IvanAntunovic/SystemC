@@ -1,0 +1,32 @@
+#include "new_master.h"
+
+void New_master::action()
+{
+  const unsigned STATUS_NOT_READY = 0;
+  const unsigned STATUS_ADDR = 1028;
+
+  unsigned status = STATUS_NOT_READY;
+
+  wait(900, SC_NS);
+
+  // Program correct start addresses
+  initiator_port->write(1024, 0, id);
+  initiator_port->write(1025, 16, id);
+  initiator_port->write(1026, 64, id);
+  initiator_port->write(1027, 16, id);
+  initiator_port->write(STATUS_ADDR, 1, id);
+
+  wait(10, SC_NS);
+  // Initiate addition
+  initiator_port->write(STATUS_ADDR, status, id);
+  while (status != STATUS_NOT_READY) {
+
+	  initiator_port->read(STATUS_ADDR, status, id);
+	  wait(10, SC_NS);
+
+  }
+
+  cout << "Status 0 " << " at " << sc_time_stamp() << ". Stopping simulation." << endl;
+
+  wait();
+}

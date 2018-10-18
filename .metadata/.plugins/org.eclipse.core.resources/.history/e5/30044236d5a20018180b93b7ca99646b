@@ -1,0 +1,50 @@
+/*
+ * test_﻿init.h
+ *
+ *  Created on: Aug 18, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_TEST__INIT_H_
+#define HEADERS_TEST__INIT_H_
+
+
+#include <systemc.h>
+
+SC_MODULE(test_﻿init﻿﻿﻿)﻿ {
+
+    SC_CTOR(test_init) {
+        SC_METHOD(method0);
+
+        SC_METHOD(method1);
+        sensitive << sig0;
+        dont_initialize();
+
+        SC_METHOD(method2);
+        sensitive << sig1;
+        dont_initialize();
+
+        sig1 = 1;
+    }
+
+    void method0() {
+        cout << "method0\n";
+    }
+
+    sc_signal<int> sig0{"sig0",42};
+
+    void method1() {
+        cout << "method1  sig0 == " << sig0 << endl;
+    }
+
+    sc_signal<int> sig1{"sig1"};
+
+    void method2() {
+        cout << "method2 sig1 == " << sig1
+        << " sig0 == " << sig0 <<  endl;
+    }
+
+};
+
+
+#endif /* HEADERS_TEST__INIT_H_ */

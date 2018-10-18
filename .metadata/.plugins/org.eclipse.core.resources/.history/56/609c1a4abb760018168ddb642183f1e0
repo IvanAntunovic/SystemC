@@ -1,0 +1,13 @@
+/*
+ * Source.cpp
+ *
+ *  Created on: Jun 23, 2018
+ *      Author: ivan
+ */
+#include "Source.h"
+
+Source::Source(sc_module_name moduleName) : sc_module(moduleName) {
+
+}
+
+

@@ -1,0 +1,34 @@
+/*
+ * Adder.cpp
+ *
+ *  Created on: Jun 22, 2018
+ *      Author: ivan
+ */
+#include "Adder.h"
+
+Adder::Adder(sc_module_name moduleName) : sc_module(moduleName) {
+
+	SC_HAS_PROCESS(Adder);
+	SC_THREAD(add);
+
+}
+
+void Adder::add(void) {
+
+	int outVal;
+
+	while (true) {
+
+		outVal = mInPort_1.read() + mInPort_2.read();
+		cout <<	 sc_module::name() << "-> Writing: " << outVal << endl;
+		mOutPort.write(outVal);
+
+		wait(10, SC_SEC);
+
+	}
+
+}
+
+
+
+

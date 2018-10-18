@@ -1,0 +1,37 @@
+/*
+ * fifo.h
+ *
+ *  Created on: Aug 18, 2018
+ *      Author: ivan
+ */
+
+#ifndef FIFO_H_
+#define FIFO_H_
+
+#include <systemc.h>
+
+SC_MODULE(Fifo) {
+
+	sc_fifo<int> fifo;
+	sc_buffer<int> buffer;
+	sc_signal<int> sig;
+
+	void p1() {
+
+	}
+
+	void p2() {
+
+	}
+
+	SC_CTOR(Fifo) {
+
+		SC_THREAD(p1);
+		SC_THREAD(p2)
+		sensitive << fifo.data_written_event() << buffer.value_changed_event();
+	}
+};
+
+
+
+#endif /* FIFO_H_ */

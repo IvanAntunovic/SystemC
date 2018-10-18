@@ -1,0 +1,17 @@
+18:14:00 **** Build of configuration Debug for project KPN ****
+make all 
+Building file: ../src/Process1.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/home/ivan/workspace/KPN/headers" -I/usr/local/systemc-2.3.1/include/ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/Process1.d" -MT"src/Process1.d" -o "src/Process1.o" "../src/Process1.cpp"
+Finished building: ../src/Process1.cpp
+ 
+Building file: ../src/Process2.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/home/ivan/workspace/KPN/headers" -I/usr/local/systemc-2.3.1/include/ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/Process2.d" -MT"src/Process2.d" -o "src/Process2.o" "../src/Process2.cpp"
+make: *** wait: No child processes.  Stop.
+make: *** Waiting for unfinished jobs....
+make: *** wait: No child processes.  Stop.
+Command canceled
+
+18:14:03 Build Cancelled (took 3s.723ms)
+

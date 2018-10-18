@@ -1,0 +1,63 @@
+#include "bus_ca.h"
+
+void Bus_ca::arbitrate() // round robin
+{
+  unsigned next = 0;
+  unsigned i;
+
+  for(;;)
+  {
+	  wait(); // wait for positive clock edge event
+	  i = 0;
+  }
+
+}
+
+void Bus_ca::write( unsigned addr, unsigned  data, unsigned id )
+{
+
+	request[id] = true;
+	wait( grant[id] );
+}
+
+void Bus_ca::read(  unsigned addr, unsigned &data, unsigned id )
+{
+
+}
+
+void Bus_ca::end_of_elaboration()
+{
+  unsigned i, slave_start, slave_end;
+  ifstream mem_map("mem_map.txt");
+  unsigned slaves = bus_port.size();
+  starts = new unsigned[slaves];
+  ends   = new unsigned[slaves];
+  mem_map >> i;
+  while( mem_map )
+  { 
+    mem_map >> slave_start >> slave_end;
+    if( i >= slaves )
+    {
+       cout << "Bus ERROR: slave number does not exist" << endl;
+       sc_stop();
+    }
+    else
+    { 
+      starts[i] = slave_start;
+      ends[i]   = slave_end;
+      cout << "Bus slave " << i << " starts " 
+           << slave_start << " ends " << slave_end << endl;
+    } 
+    mem_map >> i;
+  }
+}
+
+unsigned Bus_ca::decode(unsigned addr)
+{
+  for( int i = 0; i < bus_port.size(); i++ )
+  {
+    if( (addr >= starts[i]) && (addr <= ends[i]) ) return i;
+  }
+  cout << "Bus ERROR: address " << addr << " not found" << endl;
+  return 0;
+}

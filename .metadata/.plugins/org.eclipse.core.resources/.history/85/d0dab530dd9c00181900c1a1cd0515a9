@@ -1,0 +1,35 @@
+#include <systemc.h>
+
+
+SC_MODULE(Test) {
+
+	sc_fifo<int> f;
+
+	void handler(void) {
+
+		while (true) {
+
+			f.write(1);
+			f.write(2);
+
+			cout << f.read() << endl;
+			cout << f.read() << endl;
+
+			wait(); }
+	}
+
+	SC_CTOR(Test) {
+		SC_THREAD(handler);
+	}
+};
+
+int sc_main(int argc, char* argv[]) {
+
+	Test test("test");
+
+	cout << endl;
+
+	sc_start();
+
+	return 0;
+}

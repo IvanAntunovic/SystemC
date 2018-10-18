@@ -1,0 +1,55 @@
+/*
+ * master.h
+ *
+ *  Created on: Aug 17, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_MASTER_H_
+#define HEADERS_MASTER_H_
+
+#include <systemc.h>
+#include "bus_if.h"
+
+SC_MODULE(Master) {
+
+	sc_port<bus_if,1> initiator_port;
+	unsigned start , end;
+	SC_HAS_PROCESS(Master);
+
+	Master::Master(sc_module_name mn, unsigned start_addr, unsigned end_addr ) : sc_module(mn)
+	{
+		SC_THREAD(action);
+		start = start_addr;
+		end = end_addr;
+	}
+
+	void action(void) {
+
+		unsigned data;
+		wait(10, SC_NS);
+
+		for( unsigned addr = start; addr <= end; addr++ )
+		{
+			data = rand();
+			initiator_port->write(addr, data);
+			cout << name() << " write(" << addr << ", " << data << ")"
+			<< " at " << sc_time_stamp() << endl;
+			wait(1, SC_NS);
+		}
+
+		for( unsigned addr = start; addr <= end; addr++ )
+		{
+			initiator_port->read(addr, data);
+			cout << name() << " read(" << addr << ", " << data << ")"
+			<< " at " << sc_time_stamp() << endl;
+			wait(1, SC_NS);
+		}
+
+	}
+};
+
+
+
+
+#endif /* HEADERS_MASTER_H_ */

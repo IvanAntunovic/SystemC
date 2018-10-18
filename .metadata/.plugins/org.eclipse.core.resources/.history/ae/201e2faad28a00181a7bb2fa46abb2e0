@@ -1,0 +1,18 @@
+#include <systemc.h>
+#include <Basic.h>
+#include "Multiport.h"
+
+
+int sc_main(int argc, char* argv[]) {
+
+	//Basic basic("basic");
+	Multiport multiPort("Multiport");
+
+	sc_signal<int> buff;
+
+	cout << endl;
+
+	sc_start();
+
+	return 0;
+}

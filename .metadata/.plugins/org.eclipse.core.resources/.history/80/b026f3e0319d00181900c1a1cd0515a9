@@ -1,0 +1,45 @@
+#include <systemc.h>
+
+
+SC_MODULE(Test) {
+
+	sc_fifo<int> f;
+
+	void handler(void) {
+
+		while (true) {
+
+			f.write(1);
+			f.write(2);
+
+			f.print(cout);
+
+			f.read(); cout << endl;
+			f.print(cout);
+
+			f.read(); cout << endl;
+			cout << "num available " << f.num_available();
+
+
+			wait(); }
+	}
+
+	void thread_process(void) {
+
+	}
+	SC_CTOR(Test) {
+		SC_THREAD(handler);
+		SC_METHOD(method_process);
+	}
+};
+
+int sc_main(int argc, char* argv[]) {
+
+	Test test("test");
+
+	cout << endl;
+
+	sc_start();
+
+	return 0;
+}

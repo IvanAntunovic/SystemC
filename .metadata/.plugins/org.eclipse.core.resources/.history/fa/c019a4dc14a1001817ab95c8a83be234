@@ -1,0 +1,8 @@
+#ifndef _TASK_5D_H_
+#define _TASK_5D_H_
+
+#include "systemc.h"
+
+SC_MODULETask5_d
+
+#endif

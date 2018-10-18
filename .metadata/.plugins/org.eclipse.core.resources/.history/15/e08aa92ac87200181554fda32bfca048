@@ -1,0 +1,69 @@
+#include "watch.h"
+
+void Watch::incrementSeconds(void) {
+
+
+	while (true) {
+
+		wait( mClock.posedge_event() )
+
+		mSecondsCounter.count();
+
+		if (mSecondsCounter.overflow()) {
+
+			mNextMinuteEvent.notify();
+
+		}
+
+	}
+
+
+
+
+
+
+}
+
+void Watch::incrementMinutes(void) {
+
+
+	while (true) {
+
+
+		wait(mNextMinuteEvent);
+
+		mMinutesCounter.count();
+
+		if (mMinutesCounter.overflow()) {
+
+			mNextHourEvent.notify();
+
+
+		}
+
+	}
+
+}
+
+void Watch::incrementHours(void) {
+
+
+	while (true) {
+
+		wait(mNextHourEvent);
+
+		mHoursCounter.count();
+
+		mHoursCounter.overflow(); // to reset the overflow flag
+
+	}
+
+
+
+}
+
+void Watch::writeTime(void) {
+
+	cout << mHoursCounter.read() << ":" << mMinutesCounter.read() << ":" << mSecondsCounter.read() << endl;
+
+}

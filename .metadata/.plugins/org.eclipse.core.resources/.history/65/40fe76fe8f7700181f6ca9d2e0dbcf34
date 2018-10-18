@@ -1,0 +1,54 @@
+/*
+ * Adapter.cpp
+ *
+ *  Created on: Jun 24, 2018
+ *      Author: ivan
+ */
+#include <AdderAdapter.h>
+
+AdderAdapter::AdderAdapter(sc_module_name moduleName, unsigned start, unsigned size) : sc_module(moduleName),
+	mStart(start), mSize(size) {
+
+}
+
+void AdderAdapter::write( unsigned addr, unsigned  data ){
+
+	if( (addr < mStart) || (addr >= mStart + mSize) ) {
+		cout << name() << " write(" << addr << ", __) : ERROR address out of range"
+				<< endl;
+		return;
+	}
+
+	if (addr = mStart) { // If Address 1024 write to the 1st input of Adder
+
+	}
+	//mMemory[addr - mStart] = data;
+
+
+}
+
+void AdderAdapter::read(  unsigned addr, unsigned &data ){
+
+
+
+}
+
+
+void Ram::write( unsigned addr, unsigned  data )
+{
+  if( (addr < start) || (addr >= start + sz) )
+    cout << name() << " write(" << addr << ", __) : ERROR address out of range"
+    << endl;
+  else
+    mem[addr-start] = data;
+}
+
+void Ram::read(  unsigned addr, unsigned &data )
+{
+  if( (addr < start) || (addr >= start + sz) )
+    cout << name() << " read(" << addr << ", __) : ERROR address out of range"
+    << endl;
+  else
+    data = mem[addr-start];
+}
+

@@ -1,0 +1,23 @@
+/*
+ * EventTest.h
+ *
+ *  Created on: Aug 10, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_EVENTTEST_H_
+#define HEADERS_EVENTTEST_H_
+
+#include <systemc.h>
+
+SC_MODULE(EventTest) {
+
+	sc_event evt1;
+
+	void p1() {
+		cout << "p1: " << sc_time_stamp() << endl;
+	}
+}
+
+
+#endif /* HEADERS_EVENTTEST_H_ */

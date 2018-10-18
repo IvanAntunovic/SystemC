@@ -1,0 +1,26 @@
+#ifndef _ADDER_H_
+#define _ADDER_H_
+
+#include "systemc.h"
+
+class Adder : public sc_module
+{
+
+public:
+  sc_in<int> x;
+  sc_in<int> y;
+  sc_out<int> s;
+
+  sc_fifo<int> f;
+
+  void add();
+  Adder(sc_module_name mn) : sc_module(mn)
+  {
+	SC_HAS_PROCESS(Adder);
+
+    SC_THREAD(add);
+    sensitive << x.value_changed() << y.value_changed;
+  }
+
+};
+#endif

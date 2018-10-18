@@ -1,0 +1,26 @@
+/*
+ * counter.h
+ *
+ *  Created on: Aug 20, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_COUNTER_H_
+#define HEADERS_COUNTER_H_
+
+#include <systemc.h>
+
+SC_MODULE(Counter) {
+
+	SC_CTOR(Counter) {
+
+
+
+	}
+
+};
+
+
+
+
+#endif /* HEADERS_COUNTER_H_ */

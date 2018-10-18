@@ -1,0 +1,34 @@
+/*
+ * TLM_PV.h
+ *
+ *  Created on: Aug 17, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_TLM_PV_H_
+#define HEADERS_TLM_PV_H_
+/*
+#include "systemc.h"
+#include "master.h"
+#include "ram.h"
+#include "bus_pv.h"
+*/
+SC_MODULE(TLM_PV) {
+
+	SC_CTOR(TLM_PV) {
+
+		/*
+		unsigned start_addr = 0;
+		unsigned end_addr = 17;
+		unsigned memory_size = 16;
+
+		Master	master1("master1", start_addr, end_addr);
+		Ram 	ram1("ram1", start_addr, memory_size);
+	*/
+
+
+	}
+};
+
+
+#endif /* HEADERS_TLM_PV_H_ */

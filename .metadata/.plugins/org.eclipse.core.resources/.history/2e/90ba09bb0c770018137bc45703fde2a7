@@ -1,0 +1,42 @@
+/*
+ * Testbench.h
+ *
+ *  Created on: Jun 22, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_TESTBENCH_H_
+#define HEADERS_TESTBENCH_H_
+
+#include <systemc.h>
+#include "Adder.h"
+#include "Multiplier.h"
+#include "Decimator.h"
+
+class Testbench : public sc_module {
+
+public:
+	static const int ADDERS_SIZE = 4;
+	static const int MULTIS_SIZE = 2;
+	static const int ARCS_SIZE = 12;
+
+	sc_fifo<int> mInputChannel_1, mInputChannel_2, mOutputChannel;
+	sc_fifo<int> mMultiInputChannel, mMultiOutChannel;
+
+	Adder* mAdders[ADDERS_SIZE];
+	Multiplier* mMultipliers[MULTIS_SIZE];
+	sc_fifo* mArcs[ARCS_SIZE];
+
+	//std::vector<Adder> mAdders[4];
+	//std::vector<Multiplier> mMultipliers {Multiplier("Mul_1", -2), Multiplier("Mul_2", -3) };
+	//Decimator mDecimator;
+
+	Testbench(sc_module_name);
+	void stimuliThread(void);
+	void checkThread(void);
+
+};
+
+
+
+#endif /* HEADERS_TESTBENCH_H_ */

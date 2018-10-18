@@ -1,0 +1,45 @@
+/*
+ * Basic.h
+ *
+ *  Created on: Jun 24, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_BASIC_H_
+#define HEADERS_BASIC_H_
+
+#include <systemc.h>
+
+SC_MODULE(Basic) {
+
+	int x, y;
+	sc_signal<int> s;
+	sc_buffer<int> b;
+	sc_fifo<int> f1, f2;
+
+	void p1() {
+
+		cout << "x: " << x << "\ty: " << y << endl;
+		wait(0, SC_NS);
+
+
+
+		int t;
+		cout << "elements in f1: ";
+	}
+
+	void p2() {
+
+		//for (;;) { }
+	}
+
+	void p3() {
+
+	}
+
+
+};
+
+
+
+#endif /* HEADERS_BASIC_H_ */

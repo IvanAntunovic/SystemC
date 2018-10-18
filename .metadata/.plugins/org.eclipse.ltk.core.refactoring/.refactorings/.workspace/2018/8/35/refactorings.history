@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 5 resources" deleteContents="false" description="Delete 5 resources" element1="/PingPOng/src/Pinger.hh" element2="/PingPOng/src/PingPongProtocol.hh" element3="/PingPOng/src/Ponger.hh" element4="/PingPOng/src/Top.hh" element5="/PingPOng/src/TopControllers.hh" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="5" stamp="1535555731912"/>
+</session>

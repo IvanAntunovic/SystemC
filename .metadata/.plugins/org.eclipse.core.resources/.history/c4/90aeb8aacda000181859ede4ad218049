@@ -1,0 +1,47 @@
+#include <systemc.h>
+
+SC_MODULE(Test) {
+
+	sc_signal<int> sig;
+	int i = 0;
+
+	void p1(void) {
+
+		while (true) {
+
+			cout << "p1, i: " << i << "\ŧ" << sc_time_stamp() << endl;
+			sig = i++;
+			wait(0, SC_NS);
+		}
+
+	}
+
+	void p2(void) {
+
+		while (true) {
+
+			cout << "p1, i: " << i << "\ŧ"
+
+			wait(0, SC_NS);
+		}
+
+	}
+
+
+	SC_CTOR(Test) {
+
+
+		SC_THREAD(p1);
+		SC_THREAD(p2);
+
+	}
+};
+
+int sc_main(int argc, char* argv[]) {
+
+	Test test("test");
+
+	sc_start(1001, SC_NS);
+
+	return 0;
+}

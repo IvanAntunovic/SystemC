@@ -1,0 +1,17 @@
+/*
+ * bus_pv.h
+ *
+ *  Created on: Aug 17, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_BUS_PV_H_
+#define HEADERS_BUS_PV_H_
+
+#defined <sytemc.h>
+
+class Bus : public
+
+
+
+#endif /* HEADERS_BUS_PV_H_ */

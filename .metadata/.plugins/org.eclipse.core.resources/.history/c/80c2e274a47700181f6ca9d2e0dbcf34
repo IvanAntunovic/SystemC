@@ -1,0 +1,43 @@
+#include "master.h"
+#include "ram.h"
+#include "bus_pv.h"
+#include "bus_cx.h"
+#include "adder.h"
+#include "AdderAdapter.h"
+#include "AdderMaster.h"
+
+int sc_main(int argc, char *argv[])
+{
+  Master master1("master1", 0, 17, 0);
+  Ram    ram1("ram1", 0, 16);
+  Master master2("master2", 20, 31, 1);
+  Ram    ram2("ram2", 16,16);
+
+  Bus_cx bus("bus_cx", 10, SC_NS);
+  AdderMaster master3("Adder_Master", 0, 15, 2);
+  Ram ram3("ram3", 64, 16);
+  Adder adder("Adder_1");
+  AdderAdapter adderAdapter("Adapter");
+
+  master1.initiator_port(bus.bus_export);
+  master2.initiator_port(bus.bus_export);
+  master3.initiator_port(bus.bus_export);
+
+  bus.bus_port(ram1.target_export);
+  bus.bus_port(ram2.target_export);
+  bus.bus_port(ram3.target_export);
+
+  us.bus_port.bind(adderAdapter);
+
+  // Adder and Adapter binding
+  adder.x.bind(adderAdapter.mFirstOutputPort);
+  adder.y.bind(adderAdapter.mSecondOutputPort);
+  adderAdapter.mInputPort.bind(adder.s);
+
+  b
+
+
+  sc_start();
+
+  return 0;
+}

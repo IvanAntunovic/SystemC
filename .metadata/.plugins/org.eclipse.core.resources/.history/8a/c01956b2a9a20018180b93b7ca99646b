@@ -1,0 +1,11 @@
+#include <systemc.h>
+#include "fi"
+
+int sc_main(int argc, char* argv[]) {
+
+	Test test("test");
+
+	sc_start(10, SC_NS);
+
+	return 0;
+}

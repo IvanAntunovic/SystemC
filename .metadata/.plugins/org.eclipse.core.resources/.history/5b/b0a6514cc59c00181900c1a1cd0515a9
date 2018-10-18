@@ -1,0 +1,16 @@
+#include <systemc.h>
+
+
+SC_MODULE(Test) {
+
+}
+
+int sc_main(int argc, char* argv[]) {
+
+
+	cout << endl;
+
+	sc_start();
+
+	return 0;
+}

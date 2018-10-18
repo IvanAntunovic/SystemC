@@ -1,0 +1,52 @@
+#include "master.h"
+#include "ram.h"
+#include "bus_pv.h"
+#include "bus_cx.h"
+#include "adder.h"
+#include "AdderAdapter.h"
+#include "AdderMaster.h"
+
+int sc_main(int argc, char *argv[])
+{
+  Master master1("master1", 0, 17, 0); // 0 ~ 15
+  Ram    ram1("ram1", 0, 16);
+  Master master2("master2", 20, 31, 1); // 16 ~ 31
+  Ram    ram2("ram2", 16,16);
+
+  Bus_cx bus("bus_cx", 10, SC_NS);
+  AdderMaster master3("Adder_Master", 0, 15, 2);
+  AdderAdapter adapter("Adapter");
+  Ram ram3("ram3", 64, 16); // 64 ~ 79
+  Adder adder("Adder_1");
+
+  sc_signal<int> ch_x, ch_y, ch_s;
+
+  // Bind Adder and Adapter to the same channel
+  adder.x.bind(ch_x);
+  adder.y.bind(ch_y);
+  adder.s.bind(ch_s);
+
+  adapter.x.bind(ch_x);
+  adapter.y.bind(ch_y);
+  adapter.s.bind(ch_s);
+
+  master1.initiator_port(bus.bus_export);
+  master2.initiator_port(bus.bus_export);
+  master3.initiator_port(bus.bus_export);
+
+  bus.bus_port(ram1.target_export);
+  bus.bus_port(ram2.target_export);
+  bus.bus_port(ram3.target_export);
+  bus.bus_port.bind(adapter);
+
+  sc_start();
+
+  cout << "Ram1" << endl << endl;
+  ram1.dump(cout);
+  cout << "Ram2" << endl << endl;
+  ram2.dump(cout);
+  cout << "Ram3" << endl << endl;
+  ram3.dump(cout);
+
+  return 0;
+}

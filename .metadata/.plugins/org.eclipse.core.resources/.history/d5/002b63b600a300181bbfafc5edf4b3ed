@@ -1,0 +1,32 @@
+/*
+ * NextTrigger.h
+ *
+ *  Created on: Aug 18, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_NEXTTRIGGER_H_
+#define HEADERS_NEXTTRIGGER_H_
+
+#include <systemc.h>
+
+SC_MODULE(NextTrigger) {
+
+	void t1() {
+
+	}
+
+	void m1() {
+
+	}
+
+	SC_CTOR(NextTrigger) {
+
+		SC_THREAD(t1);
+		SC_METHOD(m1);
+	}
+};
+
+
+
+#endif /* HEADERS_NEXTTRIGGER_H_ */

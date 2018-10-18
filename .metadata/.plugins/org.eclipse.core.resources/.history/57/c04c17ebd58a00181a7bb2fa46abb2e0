@@ -1,0 +1,37 @@
+#include "testbench.h"
+
+int a, b;
+
+sc_singal<int> c, d;
+
+Testbench::Testbench(sc_module_name moduleName): sc_module(moduleName),
+	mThread("Thread"),
+	mChannel("Channel") {
+
+	  SC_HAS_PROCESS(Testbench);
+	  SC_THREAD(stim_th_1);				// without sensitivity
+	  SC_THREAD(stim_th_2);
+	  SC_THREAD(check);
+
+	  mThread.mInputPort.bind(mChannel);
+
+}
+
+void Testbench::stim_th_1()  // SC_THREAD
+{
+	cout << "Thread 1 started to run" << endl;
+
+}
+
+void Testbench::stim_th_2()  // SC_THREAD
+{
+	cout << "Thread 2 started to run" << endl;
+
+}
+
+void Testbench::check() // SC_METHOD
+{
+
+
+
+}

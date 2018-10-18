@@ -1,0 +1,72 @@
+/*
+ * watch.h
+ *
+ *  Created on: Aug 19, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_WATCH_H_
+#define HEADERS_WATCH_H_
+
+#include <systemc.h>
+#include <counter.h>
+
+SC_MODULE(Watch) {
+
+	Counter secCounter;
+	Counter minCounter;
+	Counter hourCounter;
+
+	sc_in<bool> clock;
+	sc_event next_minute;
+	sc_event next_hour;
+
+	SC_CTOR(Watch) : secCounter(60), minCounter(60), hourCounter(24) {
+
+		SC_THREAD( incSecProcess );
+		sensitive << clock.pos();
+
+
+	}
+
+	void incSecProcess () {
+
+		while (true) {
+
+			wait( );
+
+			if ( clock.event() ) {
+
+				secCounter.count();
+
+			}
+
+
+		}
+
+	}
+
+	void incMinProcess() {
+
+		while (true) {
+
+			wait( )
+		}
+
+	}
+
+	void incHourProcess() {
+
+		while (true) {
+
+		}
+
+	}
+
+
+
+};
+
+
+
+#endif /* HEADERS_WATCH_H_ */

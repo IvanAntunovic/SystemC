@@ -1,0 +1,17 @@
+/*
+ * watch.h
+ *
+ *  Created on: Aug 19, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_WATCH_H_
+#define HEADERS_WATCH_H_
+
+#include <sytemc.h>
+
+class Watch :
+
+
+
+#endif /* HEADERS_WATCH_H_ */

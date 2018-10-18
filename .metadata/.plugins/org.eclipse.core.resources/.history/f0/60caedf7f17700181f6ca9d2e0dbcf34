@@ -1,0 +1,56 @@
+/*
+ * Multiport.h
+ *
+ *  Created on: Jun 24, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_MULTIPORT_H_
+#define HEADERS_MULTIPORT_H_
+
+#include <systemc.h>
+
+class Multiport : public sc_module {
+
+public:
+	sc_fifo_out<int> mPort;
+	sc_fifo<int> mChannel_1;
+	sc_fifo<int> mChannel_2;
+	sc_fifo<int> mChannel_3;
+
+	Multiport(sc_module_name moduleName) : sc_module(moduleName) {
+
+		SC_HAS_PROCESS(Multiport);
+		SC_THREAD(simuli);
+		SC_THREAD(check);
+
+		mPort.bind(mChannel_1);
+		mPort.bind(mChannel_2);
+		mPort.bind(mChannel_3);
+
+		cout << "Size: " << mPort.size() << endl;
+
+	}
+
+	void simuli(void) {
+
+		mPort[0]->write(5);
+		mPort[1]->write(10);
+		mPort[2]->write(15);
+
+
+	}
+
+	void check(void) {
+
+		for (int i = 0; i < mPort.size(); ++i) {
+			cout << "Channel " << i << " : " <<
+		}
+	}
+
+};
+
+
+
+
+#endif /* HEADERS_MULTIPORT_H_ */

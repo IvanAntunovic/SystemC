@@ -1,0 +1,56 @@
+#include <systemc.h>
+
+SC_MODULE(Test) {
+
+	sc_event evt;
+
+	sc_signal<int> sig_1;
+	sc_signal<int> sig_2;
+
+	int i = 0;
+	int j = 0;
+
+	ofstream file;
+
+	void p1(void) {
+
+		while (true) {
+
+			cout << "p1: " << i << "\t" << sc_time_stamp() << endl;
+			sig_1 = i++;
+			//evt.notify();
+			//wait(1, SC_NS);
+		}
+
+	}
+
+	void p2(void) {
+
+		while (true) {
+
+			//wait( evt );
+			cout << "p2: " << j << "\t" << sc_time_stamp() << endl;
+			sig_2 = j++;
+			//wait(1, SC_NS);
+		}
+
+	}
+
+
+	SC_CTOR(Test) : file("output.txt") {
+
+		SC_METHOD(p1);
+		sensitive << sig_1;
+		SC_METHOD(p2);
+		sensitive << sig_2;
+	}
+};
+
+int sc_main(int argc, char* argv[]) {
+
+	Test test("test");
+
+	sc_start(10, SC_NS);
+
+	return 0;
+}

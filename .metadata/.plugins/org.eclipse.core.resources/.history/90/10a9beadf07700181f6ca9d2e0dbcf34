@@ -1,0 +1,13 @@
+#include <systemc.h>
+#include <Basic.h>
+
+int sc_main(int argc, char* argv[]) {
+
+	Basic basic("basic");
+
+	cout << endl;
+
+	sc_start();
+
+	return 0;
+}

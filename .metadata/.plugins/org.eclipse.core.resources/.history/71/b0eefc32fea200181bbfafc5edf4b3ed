@@ -1,0 +1,14 @@
+#include "adder.h"
+
+void Adder::add()
+{
+
+	while (true) {
+
+		wait( x.value_changed_event() | y.value_changed_event());
+
+		s = x + y;
+
+	}
+
+}

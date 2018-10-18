@@ -1,0 +1,21 @@
+/*
+ * ram.cpp
+ *
+ *  Created on: Aug 18, 2018
+ *      Author: ivan
+ */
+
+#include "ram.h"
+
+void Ram::write(unsigned addr, unsigned data) {
+
+	memory[addr - start_addr] = data;
+
+}
+
+void Ram::read(unsigned addr, unsigned& data) {
+
+	data = memory[addr - start_addr];
+
+}
+

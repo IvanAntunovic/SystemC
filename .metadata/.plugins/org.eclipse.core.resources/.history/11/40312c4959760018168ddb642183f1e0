@@ -1,0 +1,46 @@
+#include "testbench.h"
+
+Testbench::Testbench(sc_module_name moduleName) : sc_module(moduleName) {
+
+	SC_HAS_PROCESS(moduleName);
+	SC_THREAD(Testbench::stim);
+	SC_THREAD(check);
+
+}
+
+void Testbench::stim()  // SC_THREAD
+{
+
+  cout << "Stimuli: " << endl
+		  << "\tInput 1: 3" << endl
+  	  	  << "\tInput 2: 4" << endl;
+  mAdderInput_ch_1.write(3); mAdderInput_ch_2.write(4);   // first stimulus
+
+}
+
+void Testbench::check() // SC_METHOD
+{
+	int adderInputOne, adderInputTwo, adderOutput;
+	int multiplierInput, mulitipilerOutput;
+	int decimatorInput, decimatorOutput;
+
+	while (true) {
+
+		// Adder Check
+		//adderInputOne = mAdderInput_ch_1.read();
+		//adderInputTwo = mAdderInput_ch_2.read();
+		adderOutput = mAdderOutput_ch.read();
+
+		cout << "Testbench::check() -> Output: " << adderOutput;
+		/*
+		cout << adderInputOne << "+" << adderInputTwo << "=" << adderOutput << endl;  // debug output
+
+		if( adderOutput != adderInputOne + adderInputTwo ) {
+			cout << "Stopping the simulation" << endl;
+			sc_stop();     // stop simulation
+		}
+		cout << "Addition -> OK" << endl;
+		*/
+	}
+
+}

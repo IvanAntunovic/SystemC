@@ -1,0 +1,12 @@
+#include <systemc.h>
+#include "EventTest.h"
+
+int sc_main(int argc, char* argv[]) {
+
+	EventTest eventTest("Event Test");
+
+	cout << "Start of simulation " << sc_time_stamp() << endl;
+	sc_start();
+
+	return 0;
+}

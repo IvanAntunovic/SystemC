@@ -1,0 +1,60 @@
+/*
+ * master.h
+ *
+ *  Created on: Aug 17, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_MASTER_H_
+#define HEADERS_MASTER_H_
+
+#include <systemc.h>
+#include "bus_if.h"
+
+SC_MODULE(Master) {
+
+	sc_port<bus_if> initiator_port;
+
+	unsigned m_start_addr, m_end_addr;
+	SC_HAS_PROCESS(Master);
+
+	Master(sc_module_name _mn, unsigned start_addr, unsigned end_addr) : sc_module(_mn), m_start_addr(start_addr), m_end_addr(end_addr) {
+
+		cout << "Master constructor called" << endl;
+		SC_THREAD(action);
+	}
+
+	void action(void) {
+
+		unsigned data;
+
+		wait(10, SC_NS);
+
+		for (int address = m_end_addr; address < m_start_addr; ++address) {
+
+			data = rand();
+			initiator_port->write(address, data);
+			cout << name() << " write(" << address << ", " << data << ")"
+					<< " at " << sc_time_stamp() << endl;
+
+			wait(1, SC_NS);
+		}
+
+		for (int address = m_end_addr; address < m_start_addr; ++address) {
+
+
+			initiator_port->read(address, data);
+			cout << name() << " read(" << address << ", " << data << ")"
+					<< " at " << sc_time_stamp() << endl;
+
+			wait(1, SC_NS);
+		}
+
+
+	}
+};
+
+
+
+
+#endif /* HEADERS_MASTER_H_ */

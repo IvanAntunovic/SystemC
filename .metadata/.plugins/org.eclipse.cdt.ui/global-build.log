@@ -1,0 +1,10 @@
+21:05:19 **** Incremental Build of configuration Debug for project PingPOng ****
+make all 
+Building file: ../src/PingPongProtocol.cc
+Invoking: GCC C++ Compiler
+g++ -I"/home/ivan/workspace/PingPOng/headers" -I/home/ivan/Documents/Papyrus-RT/plugins/org.eclipse.papyrusrt.rts_1.0.0.201707181457/umlrts -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/PingPongProtocol.d" -MT"src/PingPongProtocol.d" -o "src/PingPongProtocol.o" "../src/PingPongProtocol.cc"
+In file included from ../src/PingPongProtocol.cc:2:0:
+/home/ivan/workspace/PingPOng/headers/PingPongProtocol.hh:5:28: fatal error: umlrtinsignal.hh: No such file or directory
+compilation terminated.
+make: *** [src/PingPongProtocol.o] Error 1
+src/subdir.mk:33: recipe for target 'src/PingPongProtocol.o' failed

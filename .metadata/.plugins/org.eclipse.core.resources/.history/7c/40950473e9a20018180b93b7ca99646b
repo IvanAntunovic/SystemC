@@ -1,0 +1,22 @@
+/*
+ * ParallelProcesses.h
+ *
+ *  Created on: Aug 18, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_PARALLELPROCESSES_H_
+#define HEADERS_PARALLELPROCESSES_H_
+
+#include <systemc.h>
+
+SC_MODULE(ParallelProcesses) {
+
+	SC_CTOR(ParallelProcesses) {
+
+	}
+
+};
+
+
+#endif /* HEADERS_PARALLELPROCESSES_H_ */

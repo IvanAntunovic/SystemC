@@ -1,0 +1,11 @@
+#include "adder.h"
+
+void Adder::add()
+{
+
+	cout << "Add" << endl;
+	s = x + y;
+
+
+
+}

@@ -1,0 +1,157 @@
+#include <systemc.h>
+
+class Process1 : public sc_module {
+
+public:
+	sc_fifo_in<int> input;
+	sc_fifo_out<int> out1, out2;
+
+	void process1(void) {
+
+		int inputData;
+
+		while (true) {
+
+			cout << "Process1" << endl;
+			inputData = input.read();
+			if (inputData % 2 == 0) {
+				out1.write(inputData);
+			} else {
+				out2.write(inputData);
+			}
+
+		}
+
+	}
+
+	public: Process1(sc_module_name moduleName) : sc_module(moduleName) {
+
+		SC_HAS_PROCESS(Process1);
+		SC_THREAD(process1);
+
+	}
+
+};
+
+class Process2 : public sc_module {
+
+public:
+	sc_fifo_in<int> in;
+	sc_fifo_out<int> out;
+
+	void process2(void) {
+
+		while (true) {
+
+			cout << "Process2" << endl;
+			out.write( in.read() );
+		}
+	}
+
+	public: Process2(sc_module_name moduleName) : sc_module(moduleName) {
+		SC_HAS_PROCESS(Process2);
+		SC_THREAD(process2);
+	}
+
+};
+
+class Process3 : public sc_module {
+
+public:
+	sc_fifo_in<int> in1, in2;
+	sc_fifo_out<int> out;
+
+	void process3(void) {
+
+		int inputData;
+		bool switch_ = true;
+
+		while (true) {
+
+			cout << "Process3" << endl;
+			if (switch_) {
+				inputData = in1.read();
+			} else {
+				inputData = in2.read();
+			}
+			out.write(inputData);
+			switch_ = !switch_;
+		}
+	}
+
+	public: Process3(sc_module_name moduleName) : sc_module(moduleName) {
+
+		SC_HAS_PROCESS(Process3);
+		SC_THREAD(process3);
+	}
+
+};
+
+/*
+class Testbench : sc_module {
+
+public:
+	sc_fifo<int> In, Out, C1, C2, C3, C4;
+
+	Process1 i1;
+	Process2 i2;
+	Process2 i3;
+	Process3 i4;
+
+	void stimuli(void);
+
+	public: Testbench(sc_module_name moduleName) : sc_module(moduleName),
+			i1("i1"), i2("i2"), i3("i3"), i4("i4"),
+			In("In"), Out("Out"), C1("C1"), C2("C2"), C3("C3"), C4("C4") {
+
+		SC_HAS_PROCESS(Testbench);
+		SC_THREAD(stimuli);
+
+		i1 << In << C1 << C2;
+		i2 << C1 << C3;
+		i3 << C2 << C4;
+		i3 << C2 << C4;
+		i4 << C3 << C4 << Out;
+	}
+
+};
+*/
+
+int sc_main(int argc, char* argv[]) {
+
+	sc_fifo<int> in_ch, out_ch, C1, C2, C3, C4;
+
+	Process1 i1("i1");
+	Process2 i2("i2");
+	Process2 i3("i3");
+	Process3 i4("i4");
+
+	i1.input(in_ch);
+	i1.input(C1);
+	i1.input(C2);
+
+	i2.in(C2);
+	i2.out(C3);
+
+	i3.in(C2);
+	i3.out(C4);
+
+	i4.in1(C3);
+	i4.in2(C4);
+	i4.out(out_ch);
+	/*
+	i1 << in_ch << C1 << C2;
+	i2 << C1 << C3;
+	i3 << C2 << C4;
+	i3 << C2 << C4;
+	i4 << C3 << C4 << Out;
+	*/
+
+	for (int i = 0; i < 10; i++) {
+		in_ch.write(i);
+	}
+
+	sc_start();
+
+	return 0;
+}

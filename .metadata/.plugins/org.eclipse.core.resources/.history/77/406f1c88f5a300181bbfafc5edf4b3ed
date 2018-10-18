@@ -1,0 +1,44 @@
+// file main.cpp
+#include "systemc.h"
+#include "testbench.h"
+
+SC_MODULE(Test) {
+
+	sc_signal<int> x, y;
+
+	void p1() {
+
+		cout << "p1" << endl;
+		x = 10;
+		wait(10, SC_NS);
+
+		cout << "p1" << endl;
+		y = 10;
+		wait(10, SC_NS);
+
+
+	}
+
+	void p2() {
+
+		wait (x.value_changed_event() & y.value_changed_event()) {
+			cout << "p2" << endl;
+		}
+	}
+
+	SC_CTOR(Test) {
+
+		SC_THREAD(p1);
+		SC_THREAD(p2);
+
+	}
+}
+
+int sc_main(int argc, char *argv[])  // cf. C++ main()
+{
+  //Testbench tb("tb");
+	Test test("t");
+  sc_start();
+  cout << "simulation finished" << endl;
+  return 0;
+}

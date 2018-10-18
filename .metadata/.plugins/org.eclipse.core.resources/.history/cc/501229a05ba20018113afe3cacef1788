@@ -1,0 +1,19 @@
+/*
+ * bus_pv.cpp
+ *
+ *  Created on: Aug 17, 2018
+ *      Author: ivan
+ */
+
+#include "bus_pv.h"
+
+void Bus::write(unsigned addr, unsigned data) {
+
+	bus_port[decode(addr)]->write( addr , data);
+}
+
+void Bus::read(unsigned addr, unsigned data) {
+
+
+}
+

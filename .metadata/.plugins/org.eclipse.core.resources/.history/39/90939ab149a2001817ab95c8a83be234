@@ -1,0 +1,18 @@
+/*
+ * slave.h
+ *
+ *  Created on: Aug 17, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_SLAVE_H_
+#define HEADERS_SLAVE_H_
+
+#include <systemc.h>
+
+class Ram : public_sc
+
+
+
+
+#endif /* HEADERS_SLAVE_H_ */

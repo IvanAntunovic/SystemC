@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;MSS_Exercise_3.1/includes&apos; to &apos;headers&apos;" description="Rename resource &apos;includes&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="includes" name="headers" stamp="1528885248329" updateReferences="true"/>
+</session>

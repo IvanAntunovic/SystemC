@@ -1,0 +1,12 @@
+#include "adder.h"
+void Adder::add()
+{
+	while (true) {
+
+		cout << "Adder process, Output FIFO size: " << s.size() << endl;
+
+		mOutPort.write( mInputPort_1.read() + mInputPort_2.read() );
+
+	}
+
+}

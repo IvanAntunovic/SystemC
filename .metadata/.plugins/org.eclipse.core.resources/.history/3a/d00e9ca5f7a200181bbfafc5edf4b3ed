@@ -1,0 +1,31 @@
+// file main.cpp
+#include "systemc.h"
+#include "testbench.h"
+#include "sensitivity.h"
+#include "EventNotifications.h"
+#include "ParallelProcesses.h"
+
+
+int sc_main(int argc, char *argv[])  // cf. C++ main()
+{
+  //Testbench tb("tb");
+  //Sensitivity sensitiv("sens");
+	//EventNotifications eventNot("ev");
+
+	ParallelProcesses parallelProc("pp");
+
+	B b;
+	C c;
+	A a;
+	cout << a.p_state << endl;
+
+  sc_start();
+
+  cout << "simulation finished" << endl;
+  cout << "a: " << parallelProc.a << endl;
+  cout << "b: " << parallelProc.b << endl;
+  cout << "c: " << parallelProc.c << endl;
+  cout << "d: " << parallelProc.d << endl;
+
+  return 0;
+}

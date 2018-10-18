@@ -1,0 +1,31 @@
+// file main.cpp
+#include "systemc.h"
+#include "testbench.h"
+#include "sensitivity.h"
+
+
+SC_MODULE(test_﻿init﻿﻿﻿)﻿ {
+
+	SC_CTOR(test_init) {
+
+	}
+};﻿
+
+int sc_main (int argc, char**argv) {
+    test_init mod{"mod"};
+    sc_start();
+    return 0;
+}
+/*
+int sc_main(int argc, char *argv[])  // cf. C++ main()
+{
+  Testbench tb("tb");
+  //Sensitivity sensitiv("sens");
+
+  sc_start();
+
+  cout << "simulation finished" << endl;
+
+  return 0;
+}
+*/

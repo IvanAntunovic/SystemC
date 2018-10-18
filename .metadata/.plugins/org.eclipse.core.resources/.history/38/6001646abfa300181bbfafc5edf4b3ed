@@ -1,0 +1,18 @@
+// file main.cpp
+#include "systemc.h"
+#include "watch.h"
+
+int sc_main(int argc, char *argv[])  // cf. C++ main()
+{
+	Watch watch("watch");
+
+	sc_clock clock("clock", 1, SC_SEC, 0.5, 0, SC_SEC);
+
+	watch.clock.bind(clock);
+
+	sc_start(86420, SC_SEC);
+
+	cout << "simulation finished" << endl;
+	return 0;
+
+}

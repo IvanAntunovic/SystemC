@@ -1,0 +1,22 @@
+/*
+ * Destination.h
+ *
+ *  Created on: Jun 23, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_DESTINATION_H_
+#define HEADERS_DESTINATION_H_
+
+#include <systemc.h>
+
+class Destination : public sc_module {
+
+
+
+};
+
+
+
+
+#endif /* HEADERS_DESTINATION_H_ */

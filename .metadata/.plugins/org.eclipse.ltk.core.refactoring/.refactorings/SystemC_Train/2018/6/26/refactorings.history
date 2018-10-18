@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;SystemC_Train/headers/SCThread.h&apos; to &apos;SCcThread.h&apos;" description="Rename resource &apos;SCThread.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="headers/SCThread.h" name="SCcThread.h" stamp="1529847528425" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;SystemC_Train/headers/SCcThread.h&apos; to &apos;ScThread.h&apos;" description="Rename resource &apos;SCcThread.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="headers/SCcThread.h" name="ScThread.h" stamp="1529847535768" updateReferences="true"/>
+</session>

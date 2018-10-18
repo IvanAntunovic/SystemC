@@ -1,0 +1,19 @@
+/*
+ * Basic.h
+ *
+ *  Created on: Jun 24, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_BASIC_H_
+#define HEADERS_BASIC_H_
+
+#include <systemc.h>
+
+SC_MODULE(Basic) {
+
+};
+
+
+
+#endif /* HEADERS_BASIC_H_ */

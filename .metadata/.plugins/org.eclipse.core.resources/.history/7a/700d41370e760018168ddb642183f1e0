@@ -1,0 +1,13 @@
+#include <systemc.h>
+
+class Process1 : public sc_module {
+
+
+};
+
+int sc_main(int argc, char* argv[]) {
+
+
+
+	return 0;
+}

@@ -1,0 +1,45 @@
+#include "testbench.h"
+
+Testbench::Testbench(sc_module_name moduleName): sc_module(moduleName),
+	mThread("Thread"),
+	mChannel("Channel") {
+
+	  SC_HAS_PROCESS(Testbench);
+	  SC_THREAD(stim);				// without sensitivity
+	  SC_THREAD(check);
+
+	  mThread.mInputPort.bind(mChannel);
+
+}
+
+void Testbench::stim_th_1()  // SC_THREAD
+{
+	int data;
+	sc_signal<int> signal("Signal");
+	sc_buffer<int> buffer("Buffer");
+
+	//while (true) {
+
+		cout << sc_module::name() << endl;
+		signal = 1; buffer = 2;
+		cout << "Signal: " << signal << "\t" << "Buffer: " << buffer;
+		signal = 3; buffer = 4;
+		cout << "Signal: " << signal << "\t" << "Buffer: " << buffer;
+		wait(0, SC_NS);
+
+		cout << "Signal: " << signal << "\t" << "Buffer: " << buffer;
+
+
+		//cin >> data;
+		//mChannel.write(data);
+		//wait(10, SC_NS);
+
+	//}
+}
+
+void Testbench::check() // SC_METHOD
+{
+
+
+
+}

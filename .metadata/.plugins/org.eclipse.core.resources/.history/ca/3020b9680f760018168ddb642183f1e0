@@ -1,0 +1,68 @@
+#include <systemc.h>
+
+class Process1 : public sc_module {
+
+	sc_fifo_in<int> a;
+	sc_fifo_out<int> x, y;
+
+	void process1(void) {
+
+		int inputData;
+
+		while (true) {
+
+			inputData = a.read();
+			if (inputData % 2 == 0) {
+				x.write(inputData);
+			} else {
+				y.write(inputData);
+			}
+
+		}
+
+	}
+
+	Process1(sc_module_name moduleName) : sc_module(moduleName) {
+
+		SC_HAS_PROCESS(Process1);
+		SC_THREAD(process1);
+
+	}
+
+};
+
+class Process3 : public sc_module {
+
+	sc_fifo_in<int> a, b;
+	sc_fifo_out<int> x;
+
+	void process3(void) {
+
+		int inputData;
+		bool switch_ = true;
+
+		while (true) {
+
+			if (switch_) {
+				inputData = a.read();
+			} else {
+				inputData = b.read();
+			}
+
+		}
+	}
+
+	Process3(sc_module_name moduleName) : sc_module(moduleName) {
+
+		SC_HAS_PROCESS(Process3);
+		SC_THREAD(process3);
+	}
+
+};
+
+int sc_main(int argc, char* argv[]) {
+
+
+
+	return 0;
+}

@@ -1,0 +1,13 @@
+#include <systemc.h>
+#include <testbench.h>
+
+int sc_main(int argc, char* argv[]) {
+
+	Testbench testbench("Testbench");
+
+	sc_start();
+
+
+
+	return 0;
+}

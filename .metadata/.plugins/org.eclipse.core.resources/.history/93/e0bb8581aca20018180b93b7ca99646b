@@ -1,0 +1,23 @@
+/*
+ * ram.h
+ *
+ *  Created on: Aug 18, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_RAM_H_
+#define HEADERS_RAM_H_
+
+#include <systemc.h>
+#include "bus_if.h"
+
+class Ram : public sc_module, public bus_if {
+
+	Ram(sc_module_name mn) : sc_module(mn) {
+
+	}
+};
+
+
+
+#endif /* HEADERS_RAM_H_ */

@@ -1,0 +1,77 @@
+/*
+ * Testbench.cpp
+ *
+ *  Created on: Jun 22, 2018
+ *      Author: ivan
+ */
+#include "Testbench.h"
+
+Testbench::Testbench(sc_module_name moduleName) : sc_module(moduleName), mSource("Source") ,mDecimator("Decimator", 10) {
+
+	SC_HAS_PROCESS(Testbench);
+	SC_THREAD(stimuliThread);
+	SC_THREAD(checkThread);
+
+	for (int i = 0; i < ADDERS_SIZE; ++i) {
+		mAdders[i] = new Adder("Adder");
+	}
+
+	mMultipliers[0] = new Multiplier("Multiplier", -2);
+	mMultipliers[1] = new Multiplier("Multiplier", -2);
+
+	for (int i = 0; i < ARCS_SIZE; ++i) {
+		mArcs[i] = new sc_fifo<int>();
+	}
+
+	this->initUut();
+}
+
+Testbench::~Testbench() {
+
+	delete[] mAdders;
+	delete[] mArcs;
+	delete[] mMultipliers;
+
+}
+
+void Testbench::initUut(void) {
+
+	mAdders[1]->mInPort_1.bind()
+
+}
+
+void Testbench::stimuliThread(void) {
+
+	while (true) {
+
+		for (int i = 0; i < 10; i++) {
+
+			cout << sc_module::name() << " Writing " << i << endl;
+			mInputChannel_1.write(i);
+			mInputChannel_2.write(i);
+			mMultiInputChannel.write(i);
+			wait(10, SC_SEC);
+		}
+
+	}
+}
+
+void Testbench::checkThread(void) {
+
+	int readVal;
+
+	while (true) {
+
+		readVal = mOutputChannel.read();
+		cout << "Testbench::evaluationThread: ADDER: "
+				<< readVal << endl;
+
+		cout << "Testbench::evaluationThread: MULTIPLIER: "
+						<< mMultiOutChannel.read() << endl << endl;
+
+	}
+
+}
+
+
+

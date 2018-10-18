@@ -1,0 +1,31 @@
+#ifndef _BUS_H_
+#define _BUS_H_
+
+#include "bus_if.h"
+
+class Bus_cx : public sc_module, public bus_if
+{
+public:
+  sc_port<bus_if,0> bus_port;
+  sc_export<bus_if> bus_export;
+  sc_mutex bus_mutex;
+  sc_time delay;
+  unsigned *starts, *ends;
+
+  void write( unsigned addr, unsigned  data );
+  void read(  unsigned addr, unsigned &data );
+  void end_of_elaboration();
+  unsigned decode(unsigned addr);
+
+
+  Bus_cx( sc_module_name mn, double bus_delay, sc_time_unit delay_unit )
+  : sc_module(mn), delay(bus_delay, delay_unit), starts(nullptr), ends(nullptr)
+  {
+    bus_export.bind(*this);
+  }
+
+  ~Bus_cx() { delete[] starts; delete[] ends; }
+
+};
+
+#endif

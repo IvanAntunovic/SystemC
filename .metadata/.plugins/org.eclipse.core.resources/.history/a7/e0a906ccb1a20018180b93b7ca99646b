@@ -1,0 +1,11 @@
+#include <systemc.h>
+#include "TLM_PV.h".h"
+
+int sc_main(int argc, char* argv[]) {
+
+	TLM_PV tlm_pv("tlm_pv");
+
+	sc_start();
+
+	return 0;
+}

@@ -1,0 +1,59 @@
+// file main.cpp
+#include "systemc.h"
+#include "testbench.h"
+#include "sensitivity.h"
+
+
+SC_MODULE(test_﻿init﻿﻿﻿)﻿ {
+
+    SC_CTOR(test_init) {
+        SC_METHOD(method0);
+
+        SC_METHOD(method1);
+        sensitive << sig0﻿;
+        dont_initialize();
+
+        SC_METHOD(method2);
+        sensitive << sig1﻿;
+        dont_initialize();
+
+        sig1 ﻿﻿= ﻿1﻿;
+    }
+
+    void method0() {
+        cout << "method0\n";
+    }
+
+    sc_signal<int> sig0{"sig0",42};﻿﻿﻿﻿
+
+    void method1() {
+        cout << "m﻿ethod1  sig0 == " << sig0 << endl﻿;
+    }
+﻿
+    sc_signal<int> sig1{"sig1"};﻿﻿﻿
+
+    void method2() {
+        cout << "method2 sig1 == " << ﻿sig1
+        ﻿<< " sig0 == " << sig0 <<  endl;
+    }
+
+};﻿
+
+int sc_main (int argc, char**argv) {
+    test_init mod{"mod"};
+    sc_start();
+    return 0;
+}
+/*
+int sc_main(int argc, char *argv[])  // cf. C++ main()
+{
+  Testbench tb("tb");
+  //Sensitivity sensitiv("sens");
+
+  sc_start();
+
+  cout << "simulation finished" << endl;
+
+  return 0;
+}
+*/

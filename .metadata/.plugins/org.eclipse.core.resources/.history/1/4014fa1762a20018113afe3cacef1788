@@ -1,0 +1,17 @@
+/*
+ * debug_if.h
+ *
+ *  Created on: Aug 17, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_DEBUG_IF_H_
+#define HEADERS_DEBUG_IF_H_
+
+#include "systemc.h"
+
+class debug_if : virtual public sc_inter
+
+
+
+#endif /* HEADERS_DEBUG_IF_H_ */

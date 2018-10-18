@@ -1,0 +1,33 @@
+#ifndef _TESTBENCH_H_
+#define _TESTBENCH_H_
+
+#include <Adder.h>
+#include "systemc.h"
+#include "Decimator.h"
+#include "Multiplier.h"
+
+class Testbench : public sc_module
+{
+	// a top level module; no ports
+public:
+	/* channels */
+  // Adder Channels
+  sc_fifo<int> mAdderInput_ch_1, mAdderInput_ch_2, mAdderOutput_ch;
+  // Multiplier Channels
+  //sc_fifo<int> mMultiplierInput_ch, mMultiplierOutput_ch;
+  // Decimator Channels
+  //sc_fifo<int> mDecimatorInput_ch, mDecimatorOutput_ch;
+
+  Adder uutAdder;						// Adder instance
+  //Decimator uutDecimator;
+ //Multiplier uutMultiplier;
+
+  Testbench(sc_module_name);
+  void stim(void);						// stimuli process
+  void check(void);						// checking process
+
+
+};
+
+#endif
+

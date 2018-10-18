@@ -1,0 +1,24 @@
+12:21:17 **** Incremental Build of configuration Debug for project SystemC_Initialization_Phase ****
+make all 
+Building file: ../src/main.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/home/ivan/workspace/SystemC_Initialization_Phase/headers" -I/usr/local/systemc-2.3.1/include/ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+In file included from ../src/main.cpp:2:0:
+/home/ivan/workspace/SystemC_Initialization_Phase/headers/basic.h: In member function ‘void Basic::p2()’:
+/home/ivan/workspace/SystemC_Initialization_Phase/headers/basic.h:44:7: warning: variable ‘data’ set but not used [-Wunused-but-set-variable]
+   int data;
+       ^
+/home/ivan/workspace/SystemC_Initialization_Phase/headers/basic.h: In member function ‘void Basic::p3()’:
+/home/ivan/workspace/SystemC_Initialization_Phase/headers/basic.h:54:7: warning: unused variable ‘data’ [-Wunused-variable]
+   int data;
+       ^
+Finished building: ../src/main.cpp
+ 
+Building target: SystemC_Initialization_Phase
+Invoking: GCC C++ Linker
+g++ -L/usr/local/systemc-2.3.1/lib-linux64 -o "SystemC_Initialization_Phase"  ./src/Process1.o ./src/Process2.o ./src/Process3.o ./src/Testbench.o ./src/main.o   -lsystemc
+Finished building target: SystemC_Initialization_Phase
+ 
+
+12:21:20 Build Finished (took 2s.743ms)
+

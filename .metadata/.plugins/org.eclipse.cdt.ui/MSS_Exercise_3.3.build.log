@@ -1,0 +1,15 @@
+16:51:59 **** Incremental Build of configuration Debug for project MSS_Exercise_3.3 ****
+make all 
+Building file: ../src/main.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/local/systemc-2.3.1/include/ -I"/home/ivan/workspace/MSS_Exercise_3.3/headers" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+Finished building: ../src/main.cpp
+ 
+Building target: MSS_Exercise_3.3
+Invoking: GCC C++ Linker
+g++ -L/usr/local/systemc-2.3.1/lib-linux64 -o "MSS_Exercise_3.3"  ./src/main.o ./src/register.o   -lsystemc
+Finished building target: MSS_Exercise_3.3
+ 
+
+16:52:01 Build Finished (took 2s.31ms)
+

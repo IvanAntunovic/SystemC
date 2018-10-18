@@ -1,0 +1,41 @@
+/*
+ * adapter.h
+ *
+ *  Created on: Aug 18, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_ADAPTER_H_
+#define HEADERS_ADAPTER_H_
+
+#include <systemc.h>
+#include <bus_if.h>
+
+class Adapter : public sc_module, public bus_if {
+
+public:
+	sc_export<bus_if> adapter_export;
+
+	sc_out<int> x, y;
+	sc_in<int> sum;
+
+    unsigned write_address, read_address;
+    unsigned data;
+
+	void write(unsigned addr, unsigned data);
+	void read(unsigned addr, unsigned& data);
+
+	void trigger_addition(void);
+
+	Adapter(sc_module_name mn) : sc_module(mn) {
+
+	}
+
+
+
+
+};
+
+
+
+#endif /* HEADERS_ADAPTER_H_ */

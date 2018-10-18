@@ -1,0 +1,66 @@
+/*
+ * NotificationTestBench.h
+ *
+ *  Created on: Aug 17, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_NOTIFICATIONTESTBENCH_H_
+#define HEADERS_NOTIFICATIONTESTBENCH_H_
+
+#include <systemc.h>
+
+SC_MODULE(NotificationsTestbench) {
+
+	sc_int<18> x;
+	sc_int<14> y;
+	sc_event new_stimulus;
+
+	void stim()
+	{
+		x = 3; y = 4;
+		cout << "Time: " << sc_time_stamp() << "\t" << "delta: " << sc_delta_count() << "\t" << "stim: new_stimulus.notify():\tx: " << x << "\ty: " << y << endl;
+		new_stimulus.notify();
+		wait(0, SC_NS);
+
+		x = 30; y = 40;
+		cout << "Time: " << sc_time_stamp() << "\t" << "delta: " << sc_delta_count() << "\t" << "stim: new_stimulus.notify():\tx: " << x << "\ty: " << y << endl;
+		new_stimulus.notify();
+		wait(0, SC_NS);
+
+		x = 300; y = 400;
+		cout << "Time: " << sc_time_stamp() << "\t" << "delta: " << sc_delta_count() << "\t" << "stim: new_stimulus.notify():\tx: " << x << "\ty: " << y << endl;
+		new_stimulus.notify();
+		wait(0, SC_NS);
+
+		cout << "Time: " << sc_time_stamp() << "\t" << "delta: " << sc_delta_count() << "\t" << "stim: end of stimuli" << endl;
+
+
+		notify(10, SC_NS, new_stimulus);
+	}
+
+	void check()
+	{
+		cout << "Time: " << sc_time_stamp() << "\t" << "delta: " << sc_delta_count() << "\t" << "check:\tx: " << x << "\ty: " << y << endl;
+
+		for(;;)
+		{
+			wait(new_stimulus);
+			cout << "Time: " << sc_time_stamp() << "\t" << "delta: " << sc_delta_count() << "\t" << "check: wait(new_stimulus)\tx: " << x << "\ty: " << y << endl;
+
+		}
+	}
+
+
+	SC_CTOR(NotificationsTestbench) {
+
+		SC_THREAD(stim);
+		SC_THREAD(check);
+		sensitive << new_stimulus;
+	}
+
+};
+
+
+
+#endif /* HEADERS_NOTIFICATIONTESTBENCH_H_ */

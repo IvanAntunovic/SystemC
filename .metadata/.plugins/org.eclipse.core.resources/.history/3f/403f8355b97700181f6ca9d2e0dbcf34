@@ -1,0 +1,45 @@
+/*
+ * SCThread.h
+ *
+ *  Created on: Jun 24, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_SCTHREAD_H_
+#define HEADERS_SCTHREAD_H_
+
+#include <systemc.h>
+
+class ScThread : public sc_module {
+
+public:
+
+	sc_in<int> x;
+
+	void action(void) {
+
+		int k;
+
+		while(true) {
+
+			//k = x.read() * x.read() + y.read() * y.read();
+			//k = x.read();
+			cout << sc_module::name() << " -> Read val: " << k << endl;
+			wait(10, SC_NS);
+
+		}
+	}
+
+	ScThread(sc_module_name moduleName) : sc_module(moduleName)//, x("X Input Port")
+	{
+
+		SC_HAS_PROCESS(ScThread);
+		SC_THREAD(action);
+		//sensitive << x << y;
+		sensitive << x;
+
+	}
+};
+
+
+#endif /* HEADERS_SCTHREAD_H_ */

@@ -1,0 +1,25 @@
+#include "adder.h"
+
+// Implementation with signals
+/*
+void Adder::add()
+{
+	while (true) {
+
+		wait( x.value_changed_event() | y.value_changed_event());
+
+		s = x + y;
+
+	}
+}
+
+*/
+
+void Adder::add() {
+
+	int sum = 0;
+
+	while (true) {
+
+	}
+}

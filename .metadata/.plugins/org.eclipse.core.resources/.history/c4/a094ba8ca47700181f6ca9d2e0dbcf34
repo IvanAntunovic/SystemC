@@ -1,0 +1,25 @@
+#ifndef _ADDER_MASTER_H_
+#define _ADDER_MASTER_H_
+
+#include "bus_if.h"
+
+class AdderMaster : public sc_module
+{
+  sc_port<bus_if,1> initiator_port;
+  unsigned start, end, id;
+
+  void action();
+
+  AdderMaster( sc_module_name mn, unsigned start_addr, unsigned end_addr, unsigned id = 0 )
+  : sc_module( mn )
+  {
+	SC_HAS_PROCESS(AdderMaster);
+    SC_THREAD(action);
+    this->id = id;
+    start = start_addr;
+    end = end_addr;
+  }
+
+};
+
+#endif

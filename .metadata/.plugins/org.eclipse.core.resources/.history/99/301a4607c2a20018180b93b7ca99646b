@@ -1,0 +1,21 @@
+/*
+ * Master_ca.h
+ *
+ *  Created on: Aug 18, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_MASTER_CA_H_
+#define HEADERS_MASTER_CA_H_
+
+#include "master.h"
+
+class Master_ca : virtual public Master {
+
+public:
+
+};
+
+
+
+#endif /* HEADERS_MASTER_CA_H_ */

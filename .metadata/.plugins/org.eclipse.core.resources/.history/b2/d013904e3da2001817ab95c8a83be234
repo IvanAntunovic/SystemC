@@ -1,0 +1,22 @@
+/*
+ * master.h
+ *
+ *  Created on: Aug 17, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_MASTER_H_
+#define HEADERS_MASTER_H_
+
+#include <systemc.h>
+#include "bus_if.h"
+
+SC_MODULE(Master) {
+
+	sc_port<bus_
+};
+
+
+
+
+#endif /* HEADERS_MASTER_H_ */

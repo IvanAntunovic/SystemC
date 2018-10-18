@@ -1,0 +1,23 @@
+/*
+ * DeltaTImeWait.h
+ *
+ *  Created on: Aug 16, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_DELTATIMEWAIT_H_
+#define HEADERS_DELTATIMEWAIT_H_
+
+#incldue "system.ch"
+
+
+SC_MODULE(DeltaTimeWait) {
+
+	SC_CTOR(DeltaTimeWait) {
+
+	}
+};
+
+
+
+#endif /* HEADERS_DELTATIMEWAIT_H_ */

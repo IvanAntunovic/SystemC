@@ -1,0 +1,20 @@
+23:59:25 **** Incremental Build of configuration Debug for project Problem 5 ****
+make all 
+Building file: ../src/main.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/home/ivan/workspace/Problem 5/headers" -I/usr/local/systemc-2.3.1/include/ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+In file included from ../src/main.cpp:3:0:
+/home/ivan/workspace/Problem 5/headers/basic.h: In member function ‘void Basic::p1()’:
+/home/ivan/workspace/Problem 5/headers/basic.h:51:9: warning: variable ‘flag’ set but not used [-Wunused-but-set-variable]
+    bool flag;
+         ^
+Finished building: ../src/main.cpp
+ 
+Building target: Problem 5
+Invoking: GCC C++ Linker
+g++ -L/usr/local/systemc-2.3.1/lib-linux64 -o "Problem 5"  ./src/Process1.o ./src/Process2.o ./src/Process3.o ./src/Testbench.o ./src/main.o   -lsystemc
+Finished building target: Problem 5
+ 
+
+23:59:28 Build Finished (took 2s.163ms)
+

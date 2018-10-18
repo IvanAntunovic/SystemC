@@ -1,0 +1,26 @@
+#ifndef _TESTBENCH_H_
+#define _TESTBENCH_H_
+
+#include "systemc.h"
+#include "ScThread.h"
+
+class Testbench : public sc_module
+{ 									// a top level module; no ports
+public:
+  ScThread thread;
+
+  void stim();						// stimuli process
+  void check();						// checking process
+
+  Testbench(sc_module_name moduleName) : sc_module(moduleName), thread("thread") {
+
+	  SC_HAS_PROCESS(Testbench);
+	  SC_THREAD(stim);				// without sensitivity
+	  SC_THREAD(check);
+
+
+  }
+};
+
+#endif
+

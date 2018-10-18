@@ -1,0 +1,7 @@
+11:53:52 **** Clean-only build of configuration Debug for project TLM ****
+make clean 
+rm -rf  ./src/adapter/adapter.o ./src/adapter/adder.o  ./src/bus.o ./src/bus_ca.o ./src/bus_cx.o ./src/main.o ./src/master.o ./src/new_master.o ./src/ram.o  ./src/adapter/adapter.d ./src/adapter/adder.d  ./src/bus.d ./src/bus_ca.d ./src/bus_cx.d ./src/main.d ./src/master.d ./src/new_master.d ./src/ram.d  TLM
+ 
+
+11:53:53 Build Finished (took 655ms)
+

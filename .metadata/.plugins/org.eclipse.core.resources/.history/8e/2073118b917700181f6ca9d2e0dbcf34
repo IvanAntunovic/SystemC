@@ -1,0 +1,35 @@
+/*
+ * Adapter.h
+ *
+ *  Created on: Jun 24, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADER_ADDERADAPTER_H_
+#define HEADER_ADDERADAPTER_H_
+
+#include <systemc.h>
+#include "bus_if.h"
+
+class AdderAdapter : public sc_module, public bus_if {
+
+private:
+	const static int ADDER_FIRST_INPUT_ADDR = 1024;
+	const static int ADDER_SECOND_INPUT_ADDR = 1025;
+	const static int ADDER_OUTPUT_ADDR = 1026;
+	unsigned mStart, mSize;
+
+public:
+
+	sc_out<int> mFirstInputPort;
+	sc_out<int> mSecondInputPort;
+	sc_in<int> mOutputPort;
+
+	AdderAdapter(sc_module_name, unsigned=1024, unsigned=3);
+	void write( unsigned addr, unsigned  data ) override;
+	void read(  unsigned addr, unsigned &data ) override;
+
+};
+
+
+#endif /* HEADER_ADDERADAPTER_H_ */

@@ -1,0 +1,57 @@
+/*
+ * basic.h
+ *
+ *  Created on: Aug 9, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_BASIC_H_
+#define HEADERS_BASIC_H_
+
+#include <systemc.h>
+
+SC_MODULE(Basic) {
+
+	int x, y;
+	sc_signal<int> s;
+	sc_buffer<int> b;
+	sc_fifo<int> f1, f2;
+
+	sc_signal<int> sig1, sig2;
+
+	void p1() {
+
+		cout << "p1" << endl;
+
+	}
+
+	void p2() {
+		for (;;) {
+			cout << "p2" << endl;
+			s.read();
+		}
+	}
+
+	void p3() {
+		for (;;) {
+			cout << "p3" << endl;
+
+
+		}
+	}
+
+	SC_CTOR(Basic) : x(2), y(3) {
+
+		SC_THREAD(p1);
+		SC_THREAD(p2);
+		sensitive << sig1;
+		SC_THREAD(p3);
+		sensitive << sig2;
+		dont_initialize();
+
+	}
+
+};
+
+
+#endif /* HEADERS_BASIC_H_ */

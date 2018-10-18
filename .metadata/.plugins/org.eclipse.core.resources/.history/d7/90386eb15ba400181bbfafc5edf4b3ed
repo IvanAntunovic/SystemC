@@ -1,0 +1,37 @@
+/*
+ * counter.h
+ *
+ *  Created on: Aug 20, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_COUNTER_H_
+#define HEADERS_COUNTER_H_
+
+#include <systemc.h>
+
+SC_MODULE(Counter) {
+
+	sc_in<bool> clk;
+	int c;
+
+	SC_CTOR(Counter)  {
+
+		this->c = 0;
+
+		SC_METHOD(process);
+		sensitive << clk.pos();
+
+	}
+
+	void process() {
+
+		this->c++,
+
+	}
+};
+
+
+
+
+#endif /* HEADERS_COUNTER_H_ */

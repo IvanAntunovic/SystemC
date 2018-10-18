@@ -1,0 +1,17 @@
+/*
+ * bus_if.h
+ *
+ *  Created on: Aug 17, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_BUS_IF_H_
+#define HEADERS_BUS_IF_H_
+
+class bus_if : virtual public sc_interface {
+
+};
+
+
+
+#endif /* HEADERS_BUS_IF_H_ */

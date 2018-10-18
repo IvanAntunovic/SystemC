@@ -1,0 +1,40 @@
+12:17:40 **** Build of configuration Debug for project MSS_Exercise_4.2 ****
+make all 
+Building file: ../src/adder.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/home/ivan/workspace/MSS_Exercise_4.2/headers" -I/usr/local/systemc-2.3.1/include/ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/adder.d" -MT"src/adder.d" -o "src/adder.o" "../src/adder.cpp"
+Finished building: ../src/adder.cpp
+ 
+Building file: ../src/bus_cx.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/home/ivan/workspace/MSS_Exercise_4.2/headers" -I/usr/local/systemc-2.3.1/include/ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/bus_cx.d" -MT"src/bus_cx.d" -o "src/bus_cx.o" "../src/bus_cx.cpp"
+Finished building: ../src/bus_cx.cpp
+ 
+Building file: ../src/bus_pv.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/home/ivan/workspace/MSS_Exercise_4.2/headers" -I/usr/local/systemc-2.3.1/include/ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/bus_pv.d" -MT"src/bus_pv.d" -o "src/bus_pv.o" "../src/bus_pv.cpp"
+Finished building: ../src/bus_pv.cpp
+ 
+Building file: ../src/master.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/home/ivan/workspace/MSS_Exercise_4.2/headers" -I/usr/local/systemc-2.3.1/include/ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/master.d" -MT"src/master.d" -o "src/master.o" "../src/master.cpp"
+Finished building: ../src/master.cpp
+ 
+Building file: ../src/ram.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/home/ivan/workspace/MSS_Exercise_4.2/headers" -I/usr/local/systemc-2.3.1/include/ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/ram.d" -MT"src/ram.d" -o "src/ram.o" "../src/ram.cpp"
+Finished building: ../src/ram.cpp
+ 
+Building file: ../src/sc_main.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/home/ivan/workspace/MSS_Exercise_4.2/headers" -I/usr/local/systemc-2.3.1/include/ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/sc_main.d" -MT"src/sc_main.d" -o "src/sc_main.o" "../src/sc_main.cpp"
+Finished building: ../src/sc_main.cpp
+ 
+Building target: MSS_Exercise_4.2
+Invoking: GCC C++ Linker
+g++ -L/usr/local/systemc-2.3.1/lib-linux64 -o "MSS_Exercise_4.2"  ./src/adder.o ./src/bus_cx.o ./src/bus_pv.o ./src/master.o ./src/ram.o ./src/sc_main.o   -lsystemc
+Finished building target: MSS_Exercise_4.2
+ 
+
+12:17:51 Build Finished (took 10s.848ms)
+

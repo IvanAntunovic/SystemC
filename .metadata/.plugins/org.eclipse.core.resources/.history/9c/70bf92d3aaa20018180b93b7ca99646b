@@ -1,0 +1,14 @@
+/*
+ * bus_if.h
+ *
+ *  Created on: Aug 18, 2018
+ *      Author: ivan
+ */
+
+#ifndef HEADERS_BUS_IF_H_
+#define HEADERS_BUS_IF_H_
+
+#include <systemc.h>
+
+
+#endif /* HEADERS_BUS_IF_H_ */

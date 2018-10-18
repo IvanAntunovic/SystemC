@@ -1,0 +1,58 @@
+/*
+ * Adapter.cpp
+ *
+ *  Created on: Jun 24, 2018
+ *      Author: ivan
+ */
+#include "Adapter.h"
+
+Adapter::Adapter(sc_module_name moduleName, unsigned start, unsigned size) : sc_module(moduleName),
+	mStart(start), mSize(size) {
+
+	mMemory = new unsigned[size];
+
+}
+
+Adapter::~Adapter(void) {
+
+	delete[] mMemory;
+
+}
+
+void Adapter::write( unsigned addr, unsigned  data ){
+
+	if( (addr < mStart) || (addr >= mStart + mSize) ) {
+		cout << name() << " write(" << addr << ", __) : ERROR address out of range"
+				<< endl;
+		return;
+	}
+
+	mMemory[addr - mStart] = data;
+
+}
+
+void Adapter::read(  unsigned addr, unsigned &data ){
+
+
+
+}
+
+
+void Ram::write( unsigned addr, unsigned  data )
+{
+  if( (addr < start) || (addr >= start + sz) )
+    cout << name() << " write(" << addr << ", __) : ERROR address out of range"
+    << endl;
+  else
+    mem[addr-start] = data;
+}
+
+void Ram::read(  unsigned addr, unsigned &data )
+{
+  if( (addr < start) || (addr >= start + sz) )
+    cout << name() << " read(" << addr << ", __) : ERROR address out of range"
+    << endl;
+  else
+    data = mem[addr-start];
+}
+

@@ -1,0 +1,28 @@
+#include "AdderMaster.h".h"
+
+void AdderMaster::action()
+{
+  unsigned data;
+
+  wait(100, SC_NS);
+
+  initiator_port->read(0, data);
+  wait(1, SC_NS);
+  initiator_port->write(1024, data);
+  wait(1, SC_NS);
+
+  initiator_port->read(1, data);
+  wait(1, SC_NS);
+  initiator_port->write(1025, data);
+  wait(1, SC_NS);
+
+  initiator_port->read(1026, data);
+  wait(1, SC_NS);
+  initiator_port->write(64, data);
+  wait(1, SC_NS);
+
+
+
+
+
+}

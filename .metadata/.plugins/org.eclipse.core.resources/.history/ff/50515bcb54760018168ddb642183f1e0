@@ -1,0 +1,48 @@
+#ifndef _TESTBENCH_H_
+#define _TESTBENCH_H_
+
+#include "systemc.h"
+#include "adder.h"
+#include "Decimator.h"
+#include "Multiplier.h"
+
+SC_MODULE(Testbench)
+{ 									// a top level module; no ports
+  /* channels */
+  // Adder Channels
+  sc_fifo<int> mAdderInput_ch_1, mAdderInput_ch_2, mAdderOutput_ch;
+  // Multiplier Channels
+  sc_fifo<int> mMultiplierInput_ch, mMultiplierOutput_ch;
+  // Decimator Channels
+  sc_fifo<int> mDecimatorInput_ch, mDecimatorOutput_ch;
+
+  Adder uutAdder;						// Adder instance
+  Decimator uutDecimator;
+  Multiplier uutMultiplier;
+
+  void stim();						// stimuli process
+  void check();						// checking process
+
+  SC_CTOR(Testbench)
+  : uutAdder("Adder uut"), uutDecimator("Decimator uut"), uutMultiplier("Multiplier uut", 5)
+  {
+    SC_THREAD(stim);				// without sensitivity
+
+    SC_THREAD(check);
+    //sensitive << ch_s;				// sensitivity for check()
+
+    uutAdder.mInputPort_1.bind(mAdderInput_ch_1);					// port x of uut bound to ch_x
+    uutAdder.mInputPort_2.bind(mAdderInput_ch_2);					// port y of uut bound to ch_y
+    uutAdder.mOutPort.bind(mAdderOutput_ch);					// port s of uut bound to ch_s
+
+    uutMultiplier.mInputPort.bind(multiplierInput_ch);
+    uutMultiplier.mOutputPort.bind(multiplierOutput_ch);
+
+    uutDecimator.mInputPort.bind(decimatorInput_ch);
+    uutDecimator.mOutputPort.bind(decimatorOutput_ch);
+
+  }
+};
+
+#endif
+

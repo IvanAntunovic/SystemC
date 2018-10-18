@@ -1,0 +1,37 @@
+#include <systemc.h>
+//#include "TLM_PV.h"
+//#include "TLM_CX.h"
+#include "TLM_CA.h"
+
+int sc_main(int argc, char* argv[]) {
+
+	//TLM_PV tlm_pv("tlm_pv");
+	//TLM_CX tlm_cx("tlm_cx");
+	//TLM_CA tlm_ca("tlm_ca");
+
+	  Master_ca master1("master1", 0, 17, 0);
+	  Ram    ram1("ram1", 0, 16);
+	  Master_ca master2("master2", 20, 31, 1);
+	  Ram    ram2("ram2", 16,16);
+	  Master_ca master3("master3", 2, 2);
+	  Ram    ram3("ram3", 64,16);
+	  //Adder  adder("adder");
+	  //Adapter adpt("adpt");
+	  Bus_ca bus("bus", 3);
+	  sc_signal<int> ch_x, ch_y, ch_s;
+
+	  sc_clock clk("clk", 5, SC_NS, 0.5, 0, SC_NS);
+
+	  master1.initiator_port(bus.bus_export);
+	  master2.initiator_port(bus.bus_export);
+	  master3.initiator_port(bus.bus_export);
+	  bus.bus_port(ram1.target_export);
+	  bus.bus_port(ram2.target_export);
+	  bus.bus_port(ram3.target_export);
+	  //bus.bus_port(adpt);
+
+
+	sc_start();
+
+	return 0;
+}
